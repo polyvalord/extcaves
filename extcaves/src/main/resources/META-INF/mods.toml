@@ -1,0 +1,22 @@
+# The overall format is standard TOML format, v0.5.0.
+modLoader="javafml" #mandatory
+loaderVersion="[32,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="All rights reserved"
+
+issueTrackerURL="https://github.com/polyvalord/extcaves/issues" #optional
+[[mods]] #mandatory
+
+modId="extcaves" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Extended Caves" #mandatory
+
+displayURL="https://www.curseforge.com/minecraft/mc-mods/extended-caves" #optional
+logoFile="extcaves.png" #optional
+authors="Polyvalord" #optional
+
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+	Extended Caves :
+	Making the underground full of things to discover
+	
+'''
