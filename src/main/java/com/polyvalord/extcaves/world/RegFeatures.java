@@ -40,7 +40,7 @@ public class RegFeatures
 	public static final RegistryObject<Feature<NoFeatureConfig>> STRUCTURE_DUNGEON_LAVASTONE = register("structure_dungeon_cobblestone", () -> new FeatureDungeon(3, 2, false, NoFeatureConfig.field_236558_a_));
 	public static final RegistryObject<Feature<NoFeatureConfig>> STRUCTURE_DUNGEON_TALL_LAVASTONE = register("structure_dungeon_cobblestone", () -> new FeatureDungeon(4, 2, true, NoFeatureConfig.field_236558_a_));
 
-	private static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, ExtCaves.MODID);
+	public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, ExtCaves.MODID);
 
 	private static <T extends IFeatureConfig> RegistryObject<Feature<T>> register(String name, Supplier<? extends Feature<T>> feature) {
 		return FEATURES.register(name, feature);

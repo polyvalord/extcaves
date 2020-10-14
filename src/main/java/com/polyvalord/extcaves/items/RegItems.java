@@ -52,7 +52,7 @@ public class RegItems
 	public static final RegistryObject<Item> RUSTY_PICKAXE = register("rusty_pickaxe", () -> new PickaxeItem(ItemTiers.RUSTY, 1, -2.8F, new Item.Properties().group(ExtCaves.extcaves_tab)));
 	public static final RegistryObject<Item> WOODEN_CANE = register("wooden_cane", () -> new SwordItem(ItemTier.WOOD, 3, -2.0F, new Item.Properties().group(ExtCaves.extcaves_tab)));
 
-	private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ExtCaves.MODID);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ExtCaves.MODID);
 
 	private static <T extends Item> RegistryObject<T> register(String name, Supplier<T> supplier) {
 		return ITEMS.register(name, supplier);
