@@ -22,21 +22,6 @@ import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class GenFeatures {
-//    // Helper class
-//    private static class CountRangeConfig {
-//        int count;
-//        int bottomOffset;
-//        int topOffset;
-//        int maximum;
-//
-//        public CountRangeConfig(int count, int bottomOffset, int topOffset, int maximum) {
-//            this.count = count;
-//            this.bottomOffset = bottomOffset;
-//            this.topOffset = topOffset;
-//            this.maximum = maximum;
-//        }
-//    }
-
     // structures
 
     // TODO: Redo structures
@@ -393,7 +378,7 @@ public class GenFeatures {
     }
 
     private static ConfiguredFeature<?, ?> topSolidRangeConfig(ConfiguredFeature<?, ?> feature, int count, int bottomOffset, int topOffset, int maximum) {
-        // TODO: Determine the distance?
+        // TODO: Determine the difference?
 //        return feature.withPlacement(Placement.field_242907_l.configure(new TopSolidRangeConfig(bottomOffset, topOffset, maximum)).func_242728_a().func_242731_b(count));
         return feature.withPlacement(Placement.field_242907_l.configure(new TopSolidRangeConfig(bottomOffset, topOffset, maximum)).func_242731_b(count));
     }
