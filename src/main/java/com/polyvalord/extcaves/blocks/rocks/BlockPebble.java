@@ -11,26 +11,22 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 
-public class BlockPebble extends BlockGroundWL 
-{
+public class BlockPebble extends BlockGroundWL {
 
-	private static final VoxelShape SHAPE = VoxelShapes.or(
-			Block.makeCuboidShape(6, 0, 6, 10, 2, 10)
-			);
+    private static final VoxelShape SHAPE = VoxelShapes.or(
+            Block.makeCuboidShape(6, 0, 6, 10, 2, 10)
+    );
 
-	public BlockPebble(Properties properties) 
-	{
-		super(properties);
-	}
+    public BlockPebble(Properties properties) {
+        super(properties);
+    }
 
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) 
-	{
-		return SHAPE;
-	}
-	
-	public AbstractBlock.OffsetType getOffsetType()
-	{
-		return AbstractBlock.OffsetType.XZ;
-	}
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return SHAPE;
+    }
+
+    public AbstractBlock.OffsetType getOffsetType() {
+        return AbstractBlock.OffsetType.XZ;
+    }
 
 }

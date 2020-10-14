@@ -85,7 +85,7 @@ public class GenFeatures {
             .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
             .func_227317_b_().build();
 
-    // Stone cluster features
+    // Stone
     private static final BlockClusterFeatureConfig CONFIG_ROCK_PEBBLE_STONE = (new BlockClusterFeatureConfig.Builder(
             new SimpleBlockStateProvider(RegBlocks.rock_pebble_stone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
             .whitelist(ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone))
@@ -332,46 +332,46 @@ public class GenFeatures {
     public static final ConfiguredFeature<?, ?> MARLSTONE = topSolidRangeConfig(configureOre(RegBlocks.dirtstone.getDefaultState(), Config.patch_size_marlstone.get()), Config.spawnrate_block_marlstone.get(), 16, 16, 64);
     public static final ConfiguredFeature<?, ?> PACKED_ICE = topSolidRangeConfig(configureOre(Blocks.PACKED_ICE.getDefaultState(), Config.patch_size_packed_ice.get()), Config.spawnrate_block_packed_ice.get(), 16, 16, 64);
 
-    public static final ConfiguredFeature<?, ?> FLINT = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_FLINT), Config.spawnrate_rock_flints.get(), 16, 16, 64);
-    public static final ConfiguredFeature<?, ?> PEBBLE_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCK_PEBBLE_STONE), Config.spawnrate_rock_pebbles.get(), 16, 16, 64);
-    public static final ConfiguredFeature<?, ?> PEBBLE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCK_PEBBLE_SEDIMENT_STONE), Config.spawnrate_rock_pebbles.get(), 16, 16, 64);
-    public static final ConfiguredFeature<?, ?> PEBBLE_LAVASTONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCK_PEBBLE_LAVASTONE), Config.spawnrate_rock_pebbles.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> FLINT = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_FLINT), Config.spawnrate_rock_flints.get(), 16, 16, 64);
+    public static final ConfiguredFeature<?, ?> PEBBLE_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_PEBBLE_STONE), Config.spawnrate_rock_pebbles.get(), 16, 16, 64);
+    public static final ConfiguredFeature<?, ?> PEBBLE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_PEBBLE_SEDIMENT_STONE), Config.spawnrate_rock_pebbles.get(), 16, 16, 64);
+    public static final ConfiguredFeature<?, ?> PEBBLE_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_PEBBLE_LAVASTONE), Config.spawnrate_rock_pebbles.get(), 0, 0, 15);
 
-    public static final ConfiguredFeature<?, ?> ROCKPILE_TWO_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCKPILE_TWO_STONE), Config.spawnrate_rock_rockpiles.get(), 16, 16, 64);
-    public static final ConfiguredFeature<?, ?> ROCKPILE_THREE_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCKPILE_THREE_STONE), Config.spawnrate_rock_rockpiles.get(), 16, 16, 64);
-    public static final ConfiguredFeature<?, ?> ROCKPILE_TWO_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCKPILE_TWO_SEDIMENT_STONE), Config.spawnrate_rock_rockpiles.get(), 16, 16, 64);
-    public static final ConfiguredFeature<?, ?> ROCKPILE_THREE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCKPILE_THREE_SEDIMENT_STONE), Config.spawnrate_rock_rockpiles.get(), 16, 16, 64);
-    public static final ConfiguredFeature<?, ?> ROCKPILE_TWO_LAVASTONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCKPILE_TWO_LAVASTONE), Config.spawnrate_rock_rockpiles.get(), 0, 0, 15);
-    public static final ConfiguredFeature<?, ?> ROCKPILE_THREE_LAVASTONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCKPILE_THREE_LAVASTONE), Config.spawnrate_rock_rockpiles.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> ROCKPILE_TWO_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCKPILE_TWO_STONE), Config.spawnrate_rock_rockpiles.get(), 16, 16, 64);
+    public static final ConfiguredFeature<?, ?> ROCKPILE_THREE_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCKPILE_THREE_STONE), Config.spawnrate_rock_rockpiles.get(), 16, 16, 64);
+    public static final ConfiguredFeature<?, ?> ROCKPILE_TWO_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCKPILE_TWO_SEDIMENT_STONE), Config.spawnrate_rock_rockpiles.get(), 16, 16, 64);
+    public static final ConfiguredFeature<?, ?> ROCKPILE_THREE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCKPILE_THREE_SEDIMENT_STONE), Config.spawnrate_rock_rockpiles.get(), 16, 16, 64);
+    public static final ConfiguredFeature<?, ?> ROCKPILE_TWO_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCKPILE_TWO_LAVASTONE), Config.spawnrate_rock_rockpiles.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> ROCKPILE_THREE_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCKPILE_THREE_LAVASTONE), Config.spawnrate_rock_rockpiles.get(), 0, 0, 15);
 
-    public static final ConfiguredFeature<?, ?> STALGAMITE_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCK_STALGAMITE_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCK_STALGAMITE_TALL_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALACTITE_STONE = topSolidRangeConfig(RegFeatures.patch_ceiling.withConfiguration(CONFIG_ROCK_STALACTITE_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALACTITE_TALL_STONE = topSolidRangeConfig(RegFeatures.patch_ceiling.withConfiguration(CONFIG_ROCK_STALACTITE_TALL_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCK_STALGAMITE_SEDIMENT_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_SEDIMENT_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALACTITE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.patch_ceiling.withConfiguration(CONFIG_ROCK_STALACTITE_SEDIMENT_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALACTITE_TALL_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.patch_ceiling.withConfiguration(CONFIG_ROCK_STALACTITE_TALL_SEDIMENT_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_LAVASTONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCK_STALAGMITE_LAVASTONE), Config.spawnrate_rock_stalagmites.get(), 0, 0, 15);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_LAVASTONE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_LAVASTONE), Config.spawnrate_rock_stalagmites.get(), 0, 0, 15);
-    public static final ConfiguredFeature<?, ?> STALACTITE_LAVASTONE = topSolidRangeConfig(RegFeatures.patch_ceiling.withConfiguration(CONFIG_ROCK_STALACTITE_LAVASTONE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
-    public static final ConfiguredFeature<?, ?> STALACTITE_TALL_LAVASTONE = topSolidRangeConfig(RegFeatures.patch_ceiling.withConfiguration(CONFIG_ROCK_STALACTITE_TALL_LAVASTONE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> STALGAMITE_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALGAMITE_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALGAMITE_TALL_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALACTITE_STONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALACTITE_TALL_STONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_TALL_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALGAMITE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALGAMITE_SEDIMENT_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_SEDIMENT_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALACTITE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_SEDIMENT_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALACTITE_TALL_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_TALL_SEDIMENT_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALGAMITE_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_LAVASTONE), Config.spawnrate_rock_stalagmites.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_LAVASTONE), Config.spawnrate_rock_stalagmites.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> STALACTITE_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_LAVASTONE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> STALACTITE_TALL_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_TALL_LAVASTONE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
 
-    public static final ConfiguredFeature<?, ?> MUSHROOM_SWEETSHROOM = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MUSHROOM_SWEETSHROOM), Config.spawnrate_mushroom_sweetshroom.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> MUSHROOM_GOLDISHROOM = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MUSHROOM_GOLDISHROOM), Config.spawnrate_mushroom_goldishroom.get(), 16, 16, 32);
-    public static final ConfiguredFeature<?, ?> MUSHROOM_SHINYSHROOM = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MUSHROOM_SHINYSHROOM), Config.spawnrate_mushroom_shinyshroom.get(), 0, 0, 15);
-    public static final ConfiguredFeature<?, ?> MUSHROOM_LUMISHROOM = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MUSHROOM_LUMISHROOM), Config.spawnrate_mushroom_lumishroom.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> MUSHROOM_FLUOSHROOM = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MUSHROOM_FLUOSHROOM), Config.spawnrate_mushroom_fluoshroom.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> MUSHROOM_ROCKSHROOM = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MUSHROOM_ROCKSHROOM), Config.spawnrate_mushroom_rockshroom.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> MUSHROOM_SWEETSHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_SWEETSHROOM), Config.spawnrate_mushroom_sweetshroom.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> MUSHROOM_GOLDISHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_GOLDISHROOM), Config.spawnrate_mushroom_goldishroom.get(), 16, 16, 32);
+    public static final ConfiguredFeature<?, ?> MUSHROOM_SHINYSHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_SHINYSHROOM), Config.spawnrate_mushroom_shinyshroom.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> MUSHROOM_LUMISHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_LUMISHROOM), Config.spawnrate_mushroom_lumishroom.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> MUSHROOM_FLUOSHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_FLUOSHROOM), Config.spawnrate_mushroom_fluoshroom.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> MUSHROOM_ROCKSHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_ROCKSHROOM), Config.spawnrate_mushroom_rockshroom.get(), 0, 0, 15);
 
-    public static final ConfiguredFeature<?, ?> MOSS_DRY = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MOSS_DRY), Config.spawnrate_moss_dry.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> MOSS_FIRE = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MOSS_FIRE), Config.spawnrate_moss_fire.get(), 0, 0, 15);
-    public static final ConfiguredFeature<?, ?> MOSS_FROZEN = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MOSS_FROZEN), Config.spawnrate_moss_frozen.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> MOSS_HANGING_ROOTS = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MOSS_HANGING_ROOTS), Config.spawnrate_moss_hanging_roots.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> MOSS_HUMID_GROUND = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MOSS_HUMID_GROUND), Config.spawnrate_moss_dry.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> MOSS_HUMID_CEILING = topSolidRangeConfig(RegFeatures.patch_ground.withConfiguration(CONFIG_MOSS_HUMID_CEILING), Config.spawnrate_moss_dry.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> MOSS_DRY = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_DRY), Config.spawnrate_moss_dry.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> MOSS_FIRE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_FIRE), Config.spawnrate_moss_fire.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> MOSS_FROZEN = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_FROZEN), Config.spawnrate_moss_frozen.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> MOSS_HANGING_ROOTS = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_HANGING_ROOTS), Config.spawnrate_moss_hanging_roots.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> MOSS_HUMID_GROUND = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_HUMID_GROUND), Config.spawnrate_moss_dry.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> MOSS_HUMID_CEILING = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_HUMID_CEILING), Config.spawnrate_moss_dry.get(), 16, 16, 54);
 
-    public static ConfiguredFeature<?, ?> VINE = topSolidRangeConfig(RegFeatures.patch_ceiling.withConfiguration(CONFIG_CAVE_VINE), Config.spawnrate_cave_vine.get(), 16, 16, 54);
+    public static ConfiguredFeature<?, ?> VINE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_CAVE_VINE), Config.spawnrate_cave_vine.get(), 16, 16, 54);
 
     private static ConfiguredFeature<?,?> configureOre(BlockState state, int patchSize) {
         return Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.field_241882_a, state, patchSize));
@@ -385,22 +385,22 @@ public class GenFeatures {
 
     // Configured Structures TODO: Go via the structure system
 
-    public static final ConfiguredFeature<?, ?> COBBLESTONE_DUNGEON = RegFeatures.structure_dungeon_cobblestone.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_COBBLESTONE));
-    public static final ConfiguredFeature<?, ?> TALL_COBBLESTONE_DUNGEON = RegFeatures.structure_dungeon_tall_lavastone.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_TALL_LAVASTONE));
-    public static final ConfiguredFeature<?, ?> ICE_DUNGEON = RegFeatures.structure_dungeon_ice.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_ICE));
-    public static final ConfiguredFeature<?, ?> LAVASTONE_DUNGEON = RegFeatures.structure_dungeon_cobblestone.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_LAVASTONE));
-    public static final ConfiguredFeature<?, ?> TALL_LAVASTONE_DUNGEON = RegFeatures.structure_dungeon_tall_lavastone.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_TALL_LAVASTONE));
+    public static final ConfiguredFeature<?, ?> COBBLESTONE_DUNGEON = RegFeatures.STRUCTURE_DUNGEON_COBBLESTONE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_COBBLESTONE));
+    public static final ConfiguredFeature<?, ?> TALL_COBBLESTONE_DUNGEON = RegFeatures.STRUCTURE_DUNGEON_TALL_COBBLESTONE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_TALL_COBBLESTONE));
+    public static final ConfiguredFeature<?, ?> ICE_DUNGEON = RegFeatures.STRUCTURE_DUNGEON_ICE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_ICE));
+    public static final ConfiguredFeature<?, ?> LAVASTONE_DUNGEON = RegFeatures.STRUCTURE_DUNGEON_LAVASTONE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_LAVASTONE));
+    public static final ConfiguredFeature<?, ?> TALL_LAVASTONE_DUNGEON = RegFeatures.STRUCTURE_DUNGEON_TALL_LAVASTONE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_TALL_LAVASTONE));
 
-    public static final ConfiguredFeature<?, ?> OAK_CABIN = RegFeatures.structure_cabin_oak.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_OAK));
-    public static final ConfiguredFeature<?, ?> COBBLESTONE_CABIN = RegFeatures.structure_cabin_cobblestone.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_COBBLESTONE));
-    public static final ConfiguredFeature<?, ?> BRICKS_CABIN = RegFeatures.structure_cabin_bricks.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_BRICKS));
-    public static final ConfiguredFeature<?, ?> SPRUCE_CABIN = RegFeatures.structure_cabin_spruce.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_SPRUCE));
-    public static final ConfiguredFeature<?, ?> JUNGLE_CABIN = RegFeatures.structure_cabin_jungle.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_JUNGLE));
-    public static final ConfiguredFeature<?, ?> ACACIA_CABIN = RegFeatures.structure_cabin_acacia.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_ACACIA));
+    public static final ConfiguredFeature<?, ?> OAK_CABIN = RegFeatures.STRUCTURE_CABIN_OAK.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_OAK));
+    public static final ConfiguredFeature<?, ?> COBBLESTONE_CABIN = RegFeatures.STRUCTURE_CABIN_COBBLESTONE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_COBBLESTONE));
+    public static final ConfiguredFeature<?, ?> BRICKS_CABIN = RegFeatures.STRUCTURE_CABIN_BRICKS.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_BRICKS));
+    public static final ConfiguredFeature<?, ?> SPRUCE_CABIN = RegFeatures.STRUCTURE_CABIN_SPRUCE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_SPRUCE));
+    public static final ConfiguredFeature<?, ?> JUNGLE_CABIN = RegFeatures.STRUCTURE_CABIN_JUNGLE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_JUNGLE));
+    public static final ConfiguredFeature<?, ?> ACACIA_CABIN = RegFeatures.STRUCTURE_CABIN_ACACIA.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_CABIN_ACACIA));
 
     /**
-     *
-     * @param event
+     * Register world generation features.
+     * @param event The biome loading event.
      */
     public static void onBiomeLoad(BiomeLoadingEvent event) {
         BiomeGenerationSettingsBuilder generation = event.getGeneration();

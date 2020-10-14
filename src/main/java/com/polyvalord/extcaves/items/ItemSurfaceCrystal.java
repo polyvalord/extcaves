@@ -18,23 +18,19 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class ItemSurfaceCrystal extends Item
-{
+public class ItemSurfaceCrystal extends Item {
+    public ItemSurfaceCrystal(Item.Properties builder) {
+        super(builder);
+    }
 
-	public ItemSurfaceCrystal(Item.Properties builder)
-	{
-		super(builder);
-	}
-	
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn)
-	{
-		ItemStack itemstack = playerIn.getHeldItem(handIn);
-        
-		ServerWorld serverworld = (ServerWorld)worldIn;
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        ItemStack itemstack = playerIn.getHeldItem(handIn);
+
+        ServerWorld serverworld = (ServerWorld) worldIn;
         ServerPlayerEntity serverplayer = (ServerPlayerEntity) playerIn;
         BlockPos blockpos = serverplayer.getBedPosition().get();
         serverplayer.teleport(serverworld, blockpos.getX(), blockpos.getY(), blockpos.getZ(), 0.0F, 0.0F);
-        
+
         playerIn.getCooldownTracker().setCooldown(this, 20);
         return ActionResult.func_233538_a_(itemstack, worldIn.isRemote());
         
@@ -86,5 +82,5 @@ public class ItemSurfaceCrystal extends Item
 			playerIn.getCooldownTracker().setCooldown(this, 60);
 			return ActionResult.resultConsume(itemstack);
 		}*/
-	}
+    }
 }
