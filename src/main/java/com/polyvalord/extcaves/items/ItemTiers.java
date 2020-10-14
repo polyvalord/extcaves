@@ -13,7 +13,7 @@ public enum ItemTiers implements IItemTier
 	
 	STONE_WEAK(1, 65, 4.0F, 1.0F, 5, () -> 
 	{
-		return Ingredient.fromTag(ItemTags.field_232909_aa_);
+		return Ingredient.fromTag(ItemTags.STONE_TOOL_MATERIALS);
 	}),
 	RUSTY(1, 125, 6.0F, 2.0F, 2, () -> 
 	{

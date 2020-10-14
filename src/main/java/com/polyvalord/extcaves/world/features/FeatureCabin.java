@@ -39,8 +39,8 @@ public class FeatureCabin extends Feature<NoFeatureConfig>
 		this.CABIN_TYPE = type;
 	}
 
-	public boolean func_230362_a_(ISeedReader seedreader, StructureManager p_230362_2_, ChunkGenerator p_230362_3_,
-			Random rand, BlockPos pos, NoFeatureConfig p_230362_6_)
+	@Override
+	public boolean func_241855_a(ISeedReader seedreader, ChunkGenerator p_241855_2_, Random rand, BlockPos pos, NoFeatureConfig p_241855_5_)
 	{
 		Rotation rotation = Rotation.randomRotation(rand);
 		TemplateManager templatemanager = ((ServerWorld) seedreader.getWorld()).getServer().func_240792_aT_();
@@ -212,5 +212,4 @@ public class FeatureCabin extends Feature<NoFeatureConfig>
 		}
 		return b;
 	}
-	
 }

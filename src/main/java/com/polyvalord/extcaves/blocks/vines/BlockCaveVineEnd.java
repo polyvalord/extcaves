@@ -20,17 +20,18 @@ public class BlockCaveVineEnd extends AbstractTopPlantBlock
 		super(properties, Direction.DOWN, SHAPE, false, 0.1D);
 	}
 
-	protected int func_230332_a_(Random p_230332_1_) {
-		return PlantBlockHelper.func_235515_a_(p_230332_1_);
+	@Override
+	protected int getGrowthAmount(Random rand) {
+		return PlantBlockHelper.getGrowthAmount(rand);
 	}
 
-	protected Block func_230330_d_()
-	{
+	@Override
+	protected boolean canGrowIn(BlockState state) {
+		return PlantBlockHelper.isAir(state);
+	}
+
+	@Override
+	protected Block getBodyPlantBlock() {
 		return RegBlocks.cave_vine;
-	}
-
-	protected boolean func_230334_h_(BlockState p_230334_1_)
-	{
-		return PlantBlockHelper.func_235514_a_(p_230334_1_);
 	}
 }

@@ -167,13 +167,13 @@ public class RegBlocks
     		new BlockSweetshroom(8, 5, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(Ref.MODID, "mushroom_sweetshroom"),
     		new BlockGoldishroom(12, 3, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(Ref.MODID, "mushroom_goldishroom"),
     		new BlockShinyshroom(15, 3, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(Ref.MODID, "mushroom_shinyshroom"),
-    		new BlockLumishroom(10, 4, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT).func_235838_a_((p_235470_0_) -> {return 9;})).setRegistryName(Ref.MODID, "mushroom_lumishroom"),
-    		new BlockFluoshroom(10, 5, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT).func_235838_a_((p_235470_0_) -> {return 8;})).setRegistryName(Ref.MODID, "mushroom_fluoshroom"),
+    		new BlockLumishroom(10, 4, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> {return 9;})).setRegistryName(Ref.MODID, "mushroom_lumishroom"),
+    		new BlockFluoshroom(10, 5, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> {return 8;})).setRegistryName(Ref.MODID, "mushroom_fluoshroom"),
     		new BlockRockshroom(18, 2, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(Ref.MODID, "mushroom_rockshroom"),
     		
     		// mosses
     		new BlockMossDry(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(Ref.MODID, "moss_dry"),
-    		new BlockMossFire(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT).func_235838_a_((p_235470_0_) -> {return 12;})).setRegistryName(Ref.MODID, "moss_fire"),
+    		new BlockMossFire(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> {return 12;})).setRegistryName(Ref.MODID, "moss_fire"),
     		new BlockMossFrozen(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(Ref.MODID, "moss_frozen"),
     		new BlockMossHangingRoots(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(Ref.MODID, "moss_hanging_roots"),
     		new BlockMossHumidGround(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(Ref.MODID, "moss_humid_ground"),

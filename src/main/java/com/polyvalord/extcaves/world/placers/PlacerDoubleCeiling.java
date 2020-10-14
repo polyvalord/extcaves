@@ -15,16 +15,6 @@ public class PlacerDoubleCeiling extends BlockPlacer
 	public static final Codec<PlacerDoubleCeiling> field_236443_b_;
 	public static final PlacerDoubleCeiling field_236444_c_ = new PlacerDoubleCeiling();
 
-	protected BlockPlacerType<?> func_230368_a_() 
-	{
-		return BlockPlacerType.DOUBLE_PLANT;
-	}
-
-	public void func_225567_a_(IWorld p_225567_1_, BlockPos p_225567_2_, BlockState p_225567_3_, Random p_225567_4_) 
-	{
-		((BlockTallCeilingWL) p_225567_3_.getBlock()).placeAt(p_225567_1_, p_225567_2_, 2);
-	}
-
 	static 
 	{
 		field_236443_b_ = Codec.unit(() -> 
@@ -32,5 +22,14 @@ public class PlacerDoubleCeiling extends BlockPlacer
 			return field_236444_c_;
 		});
 	}
-	
+
+	@Override
+	public void place(IWorld world, BlockPos pos, BlockState state, Random random) {
+		((BlockTallCeilingWL) state.getBlock()).placeAt(world, pos, 2);
+	}
+
+	@Override
+	protected BlockPlacerType<?> getBlockPlacerType() {
+		return BlockPlacerType.DOUBLE_PLANT;
+	}
 }

@@ -30,7 +30,7 @@ public class ItemSurfaceCrystal extends Item
 	{
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
         
-		ServerWorld serverworld = (ServerWorld)worldIn.getWorld();
+		ServerWorld serverworld = (ServerWorld)worldIn;
         ServerPlayerEntity serverplayer = (ServerPlayerEntity) playerIn;
         BlockPos blockpos = serverplayer.getBedPosition().get();
         serverplayer.teleport(serverworld, blockpos.getX(), blockpos.getY(), blockpos.getZ(), 0.0F, 0.0F);

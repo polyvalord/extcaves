@@ -7,6 +7,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -53,6 +54,7 @@ public class ExtCaves
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, GenFeatures::onBiomeLoad);
     }
     
     // custom creative tab
@@ -67,7 +69,7 @@ public class ExtCaves
 
     private void setup(final FMLCommonSetupEvent event)
     {
-    	GenFeatures.setupFeaturesGen();
+//    	GenFeatures.setupFeaturesGen();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) 

@@ -13,13 +13,13 @@ public class BlockCaveVine extends AbstractBodyPlantBlock
 {
 	public static final VoxelShape SHAPE = Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
-	public BlockCaveVine(AbstractBlock.Properties properties) 
+	public BlockCaveVine(AbstractBlock.Properties properties)
 	{
 		super(properties, Direction.DOWN, SHAPE, false);
 	}
 
-	protected AbstractTopPlantBlock func_230331_c_()
-	{
+	@Override
+	protected AbstractTopPlantBlock getTopPlantBlock() {
 		return (AbstractTopPlantBlock) RegBlocks.cave_vine_end;
 	}
 }

@@ -43,7 +43,8 @@ public class FeatureDungeon extends Feature<NoFeatureConfig>
 		this.DUNGEON_TALL = dungeontall;
 	}
 
-	public boolean func_230362_a_(ISeedReader seedreader, StructureManager p_230362_2_, ChunkGenerator p_230362_3_,
+	@Override
+	public boolean func_241855_a(ISeedReader seedreader, ChunkGenerator p_230362_3_,
 			Random rand, BlockPos pos, NoFeatureConfig p_230362_6_)
 	{
 		Rotation rotation = Rotation.randomRotation(rand);
