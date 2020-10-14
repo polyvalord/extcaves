@@ -11,26 +11,21 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 
-public class BlockFlint extends BlockGroundWL 
-{
+public class BlockFlint extends BlockGroundWL {
+    // TODO: Adapt based on offset...
+    private static final VoxelShape SHAPE = VoxelShapes.or(
+            Block.makeCuboidShape(5.5, 0, 5.5, 10.5, 2, 10.5)
+    );
 
-	private static final VoxelShape SHAPE = VoxelShapes.or(
-			Block.makeCuboidShape(5.5, 0, 5.5, 10.5, 2, 10.5)
-			);
+    public BlockFlint(Properties properties) {
+        super(properties);
+    }
 
-	public BlockFlint(Properties properties) 
-	{
-		super(properties);
-	}
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return SHAPE;
+    }
 
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) 
-	{
-		return SHAPE;
-	}
-
-	public AbstractBlock.OffsetType getOffsetType()
-	{
-		return AbstractBlock.OffsetType.XZ;
-	}
-
+    public AbstractBlock.OffsetType getOffsetType() {
+        return AbstractBlock.OffsetType.XZ;
+    }
 }

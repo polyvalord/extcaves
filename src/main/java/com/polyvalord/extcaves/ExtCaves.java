@@ -31,9 +31,11 @@ import com.polyvalord.extcaves.world.GenFeatures;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(Ref.MODID)
+@Mod(ExtCaves.MODID)
 public class ExtCaves
 {
+    public static final String MODID = "extcaves";
+
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -52,7 +54,7 @@ public class ExtCaves
     }
     
     // custom creative tab
-    public static ItemGroup extcaves_tab = new ItemGroup(Ref.MODID)
+    public static ItemGroup extcaves_tab = new ItemGroup(MODID)
     {
     	@Override
         public ItemStack createIcon()
