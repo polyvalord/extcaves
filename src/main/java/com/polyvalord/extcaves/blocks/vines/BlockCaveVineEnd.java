@@ -32,6 +32,6 @@ public class BlockCaveVineEnd extends AbstractTopPlantBlock
 
 	@Override
 	protected Block getBodyPlantBlock() {
-		return RegBlocks.cave_vine;
+		return RegBlocks.CAVE_VINE.get();
 	}
 }

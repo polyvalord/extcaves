@@ -20,7 +20,6 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.feature.template.BlockIgnoreStructureProcessor;
 import net.minecraft.world.gen.feature.template.IntegrityProcessor;
 import net.minecraft.world.gen.feature.template.PlacementSettings;
@@ -109,7 +108,7 @@ public class FeatureDungeon extends Feature<NoFeatureConfig> {
             }
 
             // treasures
-            BlockState treasureblock = RegBlocks.treasure_pot.getDefaultState();
+            BlockState treasureblock = RegBlocks.TREASURE_POT.get().getDefaultState();
             int t, t2;
             for (px = minoffset + 1; px < maxoffset - 1; px++) {
                 for (pz = minoffset + 1; pz < maxoffset - 1; pz++) {
@@ -119,11 +118,11 @@ public class FeatureDungeon extends Feature<NoFeatureConfig> {
                         t2 = rand.nextInt(2);
                         switch (t2) {
                             case 0:
-                                treasureblock = RegBlocks.treasure_pot_short.getDefaultState()
+                                treasureblock = RegBlocks.TREASURE_POT_SHORT.get().getDefaultState()
                                         .with(BlockGroundFacingWL.HORIZONTAL_FACING, getRandomDir(rand));
                                 break;
                             case 1:
-                                treasureblock = RegBlocks.treasure_pot_long.getDefaultState()
+                                treasureblock = RegBlocks.TREASURE_POT_LONG.get().getDefaultState()
                                         .with(BlockGroundFacingWL.HORIZONTAL_FACING, getRandomDir(rand));
                                 break;
                         }
@@ -136,11 +135,11 @@ public class FeatureDungeon extends Feature<NoFeatureConfig> {
                         t2 = rand.nextInt(2);
                         switch (t2) {
                             case 0:
-                                treasureblock = RegBlocks.treasure_pot_quartz_short.getDefaultState()
+                                treasureblock = RegBlocks.TREASURE_POT_QUARTZ_SHORT.get().getDefaultState()
                                         .with(BlockGroundFacingWL.HORIZONTAL_FACING, getRandomDir(rand));
                                 break;
                             case 1:
-                                treasureblock = RegBlocks.treasure_pot_quartz_long.getDefaultState()
+                                treasureblock = RegBlocks.TREASURE_POT_QUARTZ_LONG.get().getDefaultState()
                                         .with(BlockGroundFacingWL.HORIZONTAL_FACING, getRandomDir(rand));
                                 break;
                         }
@@ -271,15 +270,15 @@ public class FeatureDungeon extends Feature<NoFeatureConfig> {
         Block r = Blocks.COBBLESTONE;
         switch (dungeontype) {
             case 2:
-                r = RegBlocks.bricks_snow;
+                r = RegBlocks.BRICKS_SNOW.get();
                 break;
 
             case 3:
-                r = RegBlocks.lavastone;
+                r = RegBlocks.LAVASTONE.get();
                 break;
 
             case 4:
-                r = RegBlocks.lavastone;
+                r = RegBlocks.LAVASTONE.get();
                 break;
         }
         return r;

@@ -50,334 +50,121 @@ import net.minecraft.item.Rarity;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ObjectHolder;
+
+import java.util.function.Supplier;
 
 // TODO: Refactor using deferred registers like RegItems and RegFeatures
 
-@Mod.EventBusSubscriber(modid = ExtCaves.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-@ObjectHolder(ExtCaves.MODID)
-public class RegBlocks
-{
+public class RegBlocks {
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ExtCaves.MODID);
 
-	// shrooms
-    public static final Block mushroom_sweetshroom = null;
-    public static final Block mushroom_goldishroom = null;
-    public static final Block mushroom_shinyshroom = null;
-    public static final Block mushroom_lumishroom = null;
-    public static final Block mushroom_fluoshroom = null;
-    public static final Block mushroom_rockshroom = null;
-    
+    // shrooms
+    public static final RegistryObject<Block> MUSHROOM_SWEETSHROOM = register("mushroom_sweetshroom", () -> new BlockSweetshroom(8, 5, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> MUSHROOM_GOLDISHROOM = register("mushroom_goldishroom", () -> new BlockGoldishroom(12, 3, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> MUSHROOM_SHINYSHROOM = register("mushroom_shinyshroom", () -> new BlockShinyshroom(15, 3, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> MUSHROOM_LUMISHROOM = register("mushroom_lumishroom", () -> new BlockLumishroom(10, 4, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> 9)));
+    public static final RegistryObject<Block> MUSHROOM_FLUOSHROOM = register("mushroom_fluoshroom", () -> new BlockFluoshroom(10, 5, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> 8)));
+    public static final RegistryObject<Block> MUSHROOM_ROCKSHROOM = register("mushroom_rockshroom", () -> new BlockRockshroom(18, 2, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)));
+
     // mosses
-    public static final Block moss_dry = null;
-    public static final Block moss_fire = null;
-    public static final Block moss_frozen = null;
-    public static final Block moss_hanging_roots = null;
-    public static final Block moss_humid_ground = null;
-    public static final Block moss_humid_ceiling = null;
-    
+    public static final RegistryObject<Block> MOSS_DRY = register("moss_dry", () -> new BlockMossDry(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> MOSS_FIRE = register("moss_fire", () -> new BlockMossFire(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> 12)));
+    public static final RegistryObject<Block> MOSS_FROZEN = register("moss_frozen", () -> new BlockMossFrozen(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> MOSS_HANGING_ROOTS = register("moss_hanging_roots", () -> new BlockMossHangingRoots(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> MOSS_HUMID_GROUND = register("moss_humid_ground", () -> new BlockMossHumidGround(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> MOSS_HUMID_CEILING = register("moss_humid_ceiling", () -> new BlockMossHumidCeiling(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)));
+
     // vines
-    public static final Block cave_vine = null;
-    public static final Block cave_vine_end = null;
-    
+    public static final RegistryObject<Block> CAVE_VINE = register("cave_vine", () -> new BlockCaveVine(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> CAVE_VINE_END = register("cave_vine_end", () -> new BlockCaveVineEnd(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+
     // blocks
-    public static final Block oldstone = null;
-    public static final Block brokenstone = null;
-    public static final Block sedimentstone = null;
-    public static final Block lavastone = null;
-    public static final Block dirtstone = null;
-    public static final Block dirtstone_cobble = null;
-    public static final Block marlstone = null;
-    public static final Block marlstone_powder = null;
-    public static final Block bricks_ice = null;
-    public static final Block bricks_snow = null;
-    public static final Block polished_lavastone = null;
-    
-    public static final Block lavastone_slab = null;
-    public static final Block dirtstone_slab = null;
-    public static final Block dirtstone_cobble_slab = null;
-    public static final Block bricks_ice_slab = null;
-    public static final Block bricks_snow_slab = null;
-    public static final Block polished_lavastone_slab = null;
-    
-    public static final Block lavastone_stairs = null;
-    public static final Block dirtstone_stairs = null;
-    public static final Block dirtstone_cobble_stairs = null;
-    public static final Block bricks_ice_stairs = null;
-    public static final Block bricks_snow_stairs = null;
-    public static final Block polished_lavastone_stairs = null;
-    
+    public static final RegistryObject<Block> OLDSTONE = register("oldstone", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 4.5F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> BROKENSTONE = register("brokenstone", () -> new BlockBrokenstone(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.75F, 1.5F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> SEDIMENT_STONE = register("sedimentstone", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.0F, 3.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> LAVASTONE = register("lavastone", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> DIRTSTONE = register("dirtstone", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.2F, 3.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> DIRTSTONE_COBBLE = register("dirtstone_cobble", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> MARLSTONE = register("marlstone", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.2F, 3.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> MARLSTONE_POWDER = register("marlstone_powder", () -> new SandBlock(6901053, Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).harvestTool(ToolType.SHOVEL).sound(SoundType.SAND)));
+    public static final RegistryObject<Block> BRICKS_ICE = register("bricks_ice", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> BRICKS_SNOW = register("bricks_snow", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> POLISHED_LAVASTONE = register("polished_lavastone", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)));
+
+    public static final RegistryObject<Block> LAVASTONE_SLAB = register("lavastone_slab", () -> new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> DIRTSTONE_SLAB = register("dirtstone_slab", () -> new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.2F, 3.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> DIRTSTONE_COBBLE_SLAB = register("dirtstone_cobble_slab", () -> new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> BRICKS_ICE_SLAB = register("bricks_ice_slab", () -> new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> BRICKS_SNOW_SLAB = register("bricks_snow_slab", () -> new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> POLISHED_LAVASTONE_SLAB = register("polished_lavastone_slab", () -> new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)));
+
+    public static final RegistryObject<Block> LAVASTONE_STAIRS = register("lavastone_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> DIRTSTONE_STAIRS = register("dirtstone_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(1.2F, 3.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> DIRTSONE_COBBLE_STAIRS = register("dirtsone_cobble_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> BRICKS_ICE_STAIRS = register("bricks_ice_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> BRICKS_SNOW_STAIRS = register("bricks_snow_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> POLISHED_LAVASTONE_STAIRS = register("polished_lavastone_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)));
+
     // rocks
-    public static final Block rock_flint = null;
-    public static final Block rock_pebble_stone = null;
-    public static final Block rock_pebble_sedimentstone = null;
-    public static final Block rock_pebble_lavastone = null;
-    public static final Block rock_pebble_andesite = null;
-    public static final Block rock_pebble_diorite = null;
-    public static final Block rock_pebble_granite = null;
-    public static final Block rockpile_two_stone = null;
-    public static final Block rockpile_two_sedimentstone = null;
-    public static final Block rockpile_two_lavastone = null;
-    public static final Block rockpile_two_andesite = null;
-    public static final Block rockpile_two_diorite = null;
-    public static final Block rockpile_two_granite = null;
-    public static final Block rockpile_three_stone = null;
-    public static final Block rockpile_three_sedimentstone = null;
-    public static final Block rockpile_three_lavastone = null;
-    public static final Block rockpile_three_andesite = null;
-    public static final Block rockpile_three_diorite = null;
-    public static final Block rockpile_three_granite = null;
-    
+    public static final RegistryObject<Block> ROCK_FLINT = register("rock_flint", () -> new BlockFlint(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)));
+    public static final RegistryObject<Block> ROCK_PEBBLE_STONE = register("rock_pebble_stone", () -> new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)));
+    public static final RegistryObject<Block> ROCK_PEBBLE_SEDIMENTSTONE = register("rock_pebble_sedimentstone", () -> new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)));
+    public static final RegistryObject<Block> ROCK_PEBBLE_LAVASTONE = register("rock_pebble_lavastone", () -> new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)));
+    public static final RegistryObject<Block> ROCK_PEBBLE_ANDESITE = register("rock_pebble_andesite", () -> new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)));
+    public static final RegistryObject<Block> ROCK_PEBBLE_DIORITE = register("rock_pebble_diorite", () -> new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)));
+    public static final RegistryObject<Block> ROCK_PEBBLE_GRANITE = register("rock_pebble_granite", () -> new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)));
+    public static final RegistryObject<Block> ROCKPILE_TWO_STONE = register("rockpile_two_stone", () -> new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_TWO_SEDIMENTSTONE = register("rockpile_two_sedimentstone", () -> new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.2F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_TWO_LAVASTONE = register("rockpile_two_lavastone", () -> new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.4F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_TWO_ANDESITE = register("rockpile_two_andesite", () -> new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_TWO_DIORITE = register("rockpile_two_diorite", () -> new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_TWO_GRANITE = register("rockpile_two_granite", () -> new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_THREE_STONE = register("rockpile_three_stone", () -> new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_THREE_SEDIMENTSTONE = register("rockpile_three_sedimentstone", () -> new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_THREE_LAVASTONE = register("rockpile_three_lavastone", () -> new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.6F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_THREE_ANDESITE = register("rockpile_three_andesite", () -> new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_THREE_DIORITE = register("rockpile_three_diorite", () -> new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCKPILE_THREE_GRANITE = register("rockpile_three_granite", () -> new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)));
+
     // speleothems
-    public static final Block rock_stalagmite_stone = null;
-    public static final Block rock_stalagmite_sedimentstone = null;
-    public static final Block rock_stalagmite_lavastone = null;
-    public static final Block rock_stalagmite_packed_ice = null;
-    public static final Block rock_stalagmite_tall_stone = null;
-    public static final Block rock_stalagmite_tall_sedimentstone = null;
-    public static final Block rock_stalagmite_tall_lavastone = null;
-    public static final Block rock_stalagmite_tall_packed_ice = null;
-    public static final Block rock_stalactite_stone = null;
-    public static final Block rock_stalactite_sedimentstone = null;
-    public static final Block rock_stalactite_lavastone = null;
-    public static final Block rock_stalactite_packed_ice = null;
-    public static final Block rock_stalactite_tall_stone = null;
-    public static final Block rock_stalactite_tall_sedimentstone = null;
-    public static final Block rock_stalactite_tall_lavastone = null;
-    public static final Block rock_stalactite_tall_packed_ice = null;
-    
+    public static final RegistryObject<Block> ROCK_STALAGMITE_STONE = register("rock_stalagmite_stone", () -> new BlockStalagmite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALAGMITE_SEDIMENTSTONE = register("rock_stalagmite_sedimentstone", () -> new BlockStalagmite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALAGMITE_LAVASTONE = register("rock_stalagmite_lavastone", () -> new BlockStalagmite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.6F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALAGMITE_PACKED_ICE = register("rock_stalagmite_packed_ice", () -> new BlockStalagmite(Block.Properties.create(Material.PACKED_ICE).slipperiness(0.98F).hardnessAndResistance(0.15F).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS)));
+    public static final RegistryObject<Block> ROCK_STALAGMITE_TALL_STONE = register("rock_stalagmite_tall_stone", () -> new BlockStalagmiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.75F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALAGMITE_TALL_SEDIMENTSTONE = register("rock_stalagmite_tall_sedimentstone", () -> new BlockStalagmiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.5F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALAGMITE_TALL_LAVASTONE = register("rock_stalagmite_tall_lavastone", () -> new BlockStalagmiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALAGMITE_TALL_PACKED_ICE = register("rock_stalagmite_tall_packed_ice", () -> new BlockStalagmiteTall(Block.Properties.create(Material.PACKED_ICE).slipperiness(0.98F).hardnessAndResistance(0.25F).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS)));
+    public static final RegistryObject<Block> ROCK_STALACTITE_STONE = register("rock_stalactite_stone", () -> new BlockStalactite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALACTITE_SEDIMENTSTONE = register("rock_stalactite_sedimentstone", () -> new BlockStalactite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALACTITE_LAVASTONE = register("rock_stalactite_lavastone", () -> new BlockStalactite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.6F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALACTITE_PACKED_ICE = register("rock_stalactite_packed_ice", () -> new BlockStalactite(Block.Properties.create(Material.PACKED_ICE).slipperiness(0.98F).hardnessAndResistance(0.15F).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS)));
+    public static final RegistryObject<Block> ROCK_STALACTITE_TALL_STONE = register("rock_stalactite_tall_stone", () -> new BlockStalactiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.75F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALACTITE_TALL_SEDIMENTSTONE = register("rock_stalactite_tall_sedimentstone", () -> new BlockStalactiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.5F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALACTITE_TALL_LAVASTONE = register("rock_stalactite_tall_lavastone", () -> new BlockStalactiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> ROCK_STALACTITE_TALL_PACKED_ICE = register("rock_stalactite_tall_packed_ice", () -> new BlockStalactiteTall(Block.Properties.create(Material.PACKED_ICE).slipperiness(0.98F).hardnessAndResistance(0.25F).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS)));
+
     // treasures
-    public static final Block treasure_pot = null;
-    public static final Block treasure_pot_short = null;
-    public static final Block treasure_pot_long = null;
-    public static final Block treasure_pot_quartz_short = null;
-    public static final Block treasure_pot_quartz_long = null;
-    
+    public static final RegistryObject<Block> TREASURE_POT = register("treasure_pot", () -> new BlockTreasurePot(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TREASURE_POT_SHORT = register("treasure_pot_short", () -> new BlockTreasurePotShort(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TREASURE_POT_LONG = register("treasure_pot_long", () -> new BlockTreasurePotLong(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TREASURE_POT_QUARTZ_SHORT = register("treasure_pot_quartz_short", () -> new BlockTreasurePotQuartzShort(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TREASURE_POT_QUARTZ_LONG = register("treasure_pot_quartz_long", () -> new BlockTreasurePotQuartzLong(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
+
     // decorations
-    public static final Block decoration_pot = null;
-    public static final Block decoration_pot_short = null;
-    public static final Block decoration_pot_long = null;
-    public static final Block decoration_pot_quartz_short = null;
-    public static final Block decoration_pot_quartz_long = null;
+    public static final RegistryObject<Block> DECORATION_POT = register("decoration_pot", () -> new BlockDecorationPot(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> DECORATION_POT_SHORT = register("decoration_pot_short", () -> new BlockDecorationPotShort(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> DECORATION_POT_LONG = register("decoration_pot_long", () -> new BlockDecorationPotLong(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> DECORATION_POT_QUARTZ_SHORT = register("decoration_pot_quartz_short", () -> new BlockDecorationPotQuartzShort(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> DECORATION_POT_QUARTZ_LONG = register("decoration_pot_quartz_long", () -> new BlockDecorationPotQuartzLong(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)));
 
-	@SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event)
-    {
-    	event.getRegistry().registerAll(
-    		// shrooms
-    		new BlockSweetshroom(8, 5, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "mushroom_sweetshroom"),
-    		new BlockGoldishroom(12, 3, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "mushroom_goldishroom"),
-    		new BlockShinyshroom(15, 3, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "mushroom_shinyshroom"),
-    		new BlockLumishroom(10, 4, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> {return 9;})).setRegistryName(ExtCaves.MODID, "mushroom_lumishroom"),
-    		new BlockFluoshroom(10, 5, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> {return 8;})).setRegistryName(ExtCaves.MODID, "mushroom_fluoshroom"),
-    		new BlockRockshroom(18, 2, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "mushroom_rockshroom"),
-    		
-    		// mosses
-    		new BlockMossDry(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "moss_dry"),
-    		new BlockMossFire(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> {return 12;})).setRegistryName(ExtCaves.MODID, "moss_fire"),
-    		new BlockMossFrozen(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "moss_frozen"),
-    		new BlockMossHangingRoots(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "moss_hanging_roots"),
-    		new BlockMossHumidGround(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "moss_humid_ground"),
-    		new BlockMossHumidCeiling(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "moss_humid_ceiling"),
-    		
-    		// vines
-    		new BlockCaveVine(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "cave_vine"),
-    		new BlockCaveVineEnd(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)).setRegistryName(ExtCaves.MODID, "cave_vine_end"),
-    		
-    		// blocks
-    		new BlockOldstone(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 4.5F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "oldstone"),
-    		new BlockBrokenstone(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.75F, 1.5F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "brokenstone"),
-    		new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.0F, 3.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "sedimentstone"),
-    		new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "lavastone"),
-    		new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.2F, 3.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "dirtstone"),
-    		new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "dirtstone_cobble"),
-    		new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.2F, 3.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "marlstone"),
-    		new SandBlock(6901053, Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).harvestTool(ToolType.SHOVEL).sound(SoundType.SAND)).setRegistryName(ExtCaves.MODID, "marlstone_powder"),
-    		new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "bricks_ice"),
-    		new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "bricks_snow"),
-    		new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "polished_lavastone"),
-    		
-    		new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "lavastone_slab"),
-    		new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.2F, 3.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "dirtstone_slab"),
-    		new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "dirtstone_cobble_slab"),
-    		new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "bricks_ice_slab"),
-    		new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "bricks_snow_slab"),
-    		new BlockSlab(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "polished_lavastone_slab"),
-    		
-    		new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "lavastone_stairs"),
-    		new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(1.2F, 3.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "dirtstone_stairs"),
-    		new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "dirtstone_cobble_stairs"),
-    		new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "bricks_ice_stairs"),
-    		new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "bricks_snow_stairs"),
-    		new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "polished_lavastone_stairs"),
-    		
-    		// rocks
-    		new BlockFlint(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)).setRegistryName(ExtCaves.MODID, "rock_flint"),
-    		new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)).setRegistryName(ExtCaves.MODID, "rock_pebble_stone"),
-    		new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)).setRegistryName(ExtCaves.MODID, "rock_pebble_sedimentstone"),
-    		new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)).setRegistryName(ExtCaves.MODID, "rock_pebble_lavastone"),
-    		new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)).setRegistryName(ExtCaves.MODID, "rock_pebble_andesite"),
-    		new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)).setRegistryName(ExtCaves.MODID, "rock_pebble_diorite"),
-    		new BlockPebble(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.0F)).setRegistryName(ExtCaves.MODID, "rock_pebble_granite"),
-    		new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_two_stone"),
-    		new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.2F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_two_sedimentstone"),
-    		new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.4F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_two_lavastone"),
-    		new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_two_andesite"),
-    		new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_two_diorite"),
-    		new BlockRockpileTwo(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_two_granite"),
-    		new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_three_stone"),
-    		new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_three_sedimentstone"),
-    		new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.6F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_three_lavastone"),
-    		new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_three_andesite"),
-    		new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_three_diorite"),
-    		new BlockRockpileThree(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rockpile_three_granite"),
-    		
-    		// speleothems
-    		new BlockStalagmite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalagmite_stone"),
-    		new BlockStalagmite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalagmite_sedimentstone"),
-    		new BlockStalagmite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.6F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalagmite_lavastone"),
-    		new BlockStalagmite(Block.Properties.create(Material.PACKED_ICE).slipperiness(0.98F).hardnessAndResistance(0.15F).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS)).setRegistryName(ExtCaves.MODID, "rock_stalagmite_packed_ice"),
-    		new BlockStalagmiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.75F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalagmite_tall_stone"),
-    		new BlockStalagmiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.5F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalagmite_tall_sedimentstone"),
-    		new BlockStalagmiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalagmite_tall_lavastone"),
-    		new BlockStalagmiteTall(Block.Properties.create(Material.PACKED_ICE).slipperiness(0.98F).hardnessAndResistance(0.25F).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS)).setRegistryName(ExtCaves.MODID, "rock_stalagmite_tall_packed_ice"),
-    		new BlockStalactite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.45F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalactite_stone"),
-    		new BlockStalactite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.3F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalactite_sedimentstone"),
-    		new BlockStalactite(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.6F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalactite_lavastone"),
-    		new BlockStalactite(Block.Properties.create(Material.PACKED_ICE).slipperiness(0.98F).hardnessAndResistance(0.15F).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS)).setRegistryName(ExtCaves.MODID, "rock_stalactite_packed_ice"),
-    		new BlockStalactiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.75F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalactite_tall_stone"),
-    		new BlockStalactiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.5F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalactite_tall_sedimentstone"),
-    		new BlockStalactiteTall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.0F).harvestTool(ToolType.PICKAXE)).setRegistryName(ExtCaves.MODID, "rock_stalactite_tall_lavastone"),
-    		new BlockStalactiteTall(Block.Properties.create(Material.PACKED_ICE).slipperiness(0.98F).hardnessAndResistance(0.25F).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS)).setRegistryName(ExtCaves.MODID, "rock_stalactite_tall_packed_ice"),
-    		
-    		new BlockTreasurePot(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "treasure_pot"),
-    		new BlockTreasurePotShort(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "treasure_pot_short"),
-    		new BlockTreasurePotLong(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "treasure_pot_long"),
-    		new BlockTreasurePotQuartzShort(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "treasure_pot_quartz_short"),
-    		new BlockTreasurePotQuartzLong(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "treasure_pot_quartz_long"),
-    		
-    		new BlockDecorationPot(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "decoration_pot"),
-    		new BlockDecorationPotShort(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "decoration_pot_short"),
-    		new BlockDecorationPotLong(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "decoration_pot_long"),
-    		new BlockDecorationPotQuartzShort(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "decoration_pot_quartz_short"),
-    		new BlockDecorationPotQuartzLong(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.2F).sound(SoundType.STONE)).setRegistryName(ExtCaves.MODID, "decoration_pot_quartz_long")
-    		
-    		
-    			);
-    	
+    private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> supplier) {
+        return BLOCKS.register(name, supplier);
     }
-
-	@SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event)
-    {
-    	event.getRegistry().registerAll(
-    		createBlockItem(mushroom_sweetshroom, new Item.Properties().food(FoodList.FOOD_SWEETSHROOM)),
-    		createBlockItem(mushroom_goldishroom, new Item.Properties().food(FoodList.FOOD_GOLDISHROOM)),
-    		createBlockItem(mushroom_shinyshroom, new Item.Properties().food(FoodList.FOOD_SHINYSHROOM)),
-    		createBlockItem(mushroom_lumishroom, new Item.Properties().food(FoodList.FOOD_LUMISHROOM)),
-    		createBlockItem(mushroom_fluoshroom, new Item.Properties().food(FoodList.FOOD_FLUOSHROOM)),
-    		createBlockItem(mushroom_rockshroom, new Item.Properties().food(FoodList.FOOD_ROCKSHROOM)),
-    		
-    		createBlockItem(moss_dry, new Item.Properties()),
-    		createBlockItem(moss_fire, new Item.Properties()),
-    		createBlockItem(moss_frozen, new Item.Properties()),
-    		createBlockItem(moss_hanging_roots, new Item.Properties()),
-    		createBlockItem(moss_humid_ground, new Item.Properties()),
-    		createBlockItem(moss_humid_ceiling, new Item.Properties()),
-    		
-    		createBlockItem(cave_vine_end, new Item.Properties()),
-    		
-    		createBlockItem(oldstone, new Item.Properties()),
-    		createBlockItem(brokenstone, new Item.Properties()),
-    		createBlockItem(sedimentstone, new Item.Properties()),
-    		createBlockItem(lavastone, new Item.Properties()),
-    		createBlockItem(dirtstone, new Item.Properties()),
-    		createBlockItem(dirtstone_cobble, new Item.Properties()),
-    		createBlockItem(marlstone, new Item.Properties()),
-    		createBlockItem(marlstone_powder, new Item.Properties()),
-    		createBlockItem(bricks_ice, new Item.Properties()),
-    		createBlockItem(bricks_snow, new Item.Properties()),
-    		createBlockItem(polished_lavastone, new Item.Properties()),
-    		
-    		createBlockItem(lavastone_slab, new Item.Properties()),
-    		createBlockItem(dirtstone_slab, new Item.Properties()),
-    		createBlockItem(dirtstone_cobble_slab, new Item.Properties()),
-    		createBlockItem(bricks_ice_slab, new Item.Properties()),
-    		createBlockItem(bricks_snow_slab, new Item.Properties()),
-    		createBlockItem(polished_lavastone_slab, new Item.Properties()),
-    		
-    		createBlockItem(lavastone_stairs, new Item.Properties()),
-    		createBlockItem(dirtstone_stairs, new Item.Properties()),
-    		createBlockItem(dirtstone_cobble_stairs, new Item.Properties()),
-    		createBlockItem(bricks_ice_stairs, new Item.Properties()),
-    		createBlockItem(bricks_snow_stairs, new Item.Properties()),
-    		createBlockItem(polished_lavastone_stairs, new Item.Properties()),
-    		
-    		createBlockItem(rock_flint, new Item.Properties()),
-    		createBlockItem(rock_pebble_stone, new Item.Properties()),
-    		createBlockItem(rock_pebble_sedimentstone, new Item.Properties()),
-    		createBlockItem(rock_pebble_lavastone, new Item.Properties()),
-    		createBlockItem(rock_pebble_andesite, new Item.Properties()),
-    		createBlockItem(rock_pebble_diorite, new Item.Properties()),
-    		createBlockItem(rock_pebble_granite, new Item.Properties()),
-    		createBlockItem(rockpile_two_stone, new Item.Properties()),
-    		createBlockItem(rockpile_two_sedimentstone, new Item.Properties()),
-    		createBlockItem(rockpile_two_lavastone, new Item.Properties()),
-    		createBlockItem(rockpile_two_andesite, new Item.Properties()),
-    		createBlockItem(rockpile_two_diorite, new Item.Properties()),
-    		createBlockItem(rockpile_two_granite, new Item.Properties()),
-    		createBlockItem(rockpile_three_stone, new Item.Properties()),
-    		createBlockItem(rockpile_three_sedimentstone, new Item.Properties()),
-    		createBlockItem(rockpile_three_lavastone, new Item.Properties()),
-    		createBlockItem(rockpile_three_andesite, new Item.Properties()),
-    		createBlockItem(rockpile_three_diorite, new Item.Properties()),
-    		createBlockItem(rockpile_three_granite, new Item.Properties()),
-    		
-    		createBlockItem(rock_stalagmite_stone, new Item.Properties()),
-    		createBlockItem(rock_stalagmite_sedimentstone, new Item.Properties()),
-    		createBlockItem(rock_stalagmite_lavastone, new Item.Properties()),
-    		createBlockItem(rock_stalagmite_packed_ice, new Item.Properties()),
-    		createDoubleBlockItem(true, rock_stalagmite_tall_stone, new Item.Properties()),
-    		createDoubleBlockItem(true, rock_stalagmite_tall_sedimentstone, new Item.Properties()),
-    		createDoubleBlockItem(true, rock_stalagmite_tall_lavastone, new Item.Properties()),
-    		createDoubleBlockItem(true, rock_stalagmite_tall_packed_ice, new Item.Properties()),
-    		createBlockItem(rock_stalactite_stone, new Item.Properties()),
-    		createBlockItem(rock_stalactite_sedimentstone, new Item.Properties()),
-    		createBlockItem(rock_stalactite_lavastone, new Item.Properties()),
-    		createBlockItem(rock_stalactite_packed_ice, new Item.Properties()),
-    		createDoubleBlockItem(false, rock_stalactite_tall_stone, new Item.Properties()),
-    		createDoubleBlockItem(false, rock_stalactite_tall_sedimentstone, new Item.Properties()),
-    		createDoubleBlockItem(false, rock_stalactite_tall_lavastone, new Item.Properties()),
-    		createDoubleBlockItem(false, rock_stalactite_tall_packed_ice, new Item.Properties()),
-    		
-    		createBlockItem(treasure_pot, new Item.Properties().rarity(Rarity.UNCOMMON)),
-    		createBlockItem(treasure_pot_short, new Item.Properties().rarity(Rarity.UNCOMMON)),
-    		createBlockItem(treasure_pot_long, new Item.Properties().rarity(Rarity.UNCOMMON)),
-    		createBlockItem(treasure_pot_quartz_short, new Item.Properties().rarity(Rarity.UNCOMMON)),
-    		createBlockItem(treasure_pot_quartz_long, new Item.Properties().rarity(Rarity.UNCOMMON)),
-    		
-    		createBlockItem(decoration_pot, new Item.Properties()),
-    		createBlockItem(decoration_pot_short, new Item.Properties()),
-    		createBlockItem(decoration_pot_long, new Item.Properties()),
-    		createBlockItem(decoration_pot_quartz_short, new Item.Properties()),
-    		createBlockItem(decoration_pot_quartz_long, new Item.Properties())
-    		
-    		
-    			);
-    }
-	
-	private static Item createBlockItem(Block block, Item.Properties properties)
-	{
-		properties.group(ExtCaves.extcaves_tab);
-		properties.maxStackSize(64);
-		return new BlockItem(block, properties).setRegistryName(block.getRegistryName());
-	}
-	
-	private static Item createDoubleBlockItem(boolean isup, Block block, Item.Properties properties)
-	{
-		properties.group(ExtCaves.extcaves_tab);
-		properties.maxStackSize(64);
-		return new ItemDoubleBlock(isup, block, properties).setRegistryName(block.getRegistryName());
-	}
 
 }
