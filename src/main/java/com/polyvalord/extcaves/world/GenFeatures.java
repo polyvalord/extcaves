@@ -8,10 +8,12 @@ import com.polyvalord.extcaves.config.Config;
 
 import com.polyvalord.extcaves.world.placers.PlacerDoubleCeiling;
 import com.polyvalord.extcaves.world.placers.PlacerDoubleGround;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.blockplacer.BlockPlacer;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
@@ -22,12 +24,12 @@ import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
 public class GenFeatures {
-    // structures
-
+    // ====================
+    // Structures
     // TODO: Redo structures
+    // ====================
 
-    // dungeons
-
+    // Dungeons
     private static final int DUNGEON_COBBLESTONE_CHANCE = 1 + (10 - Config.spawnrate_structure_dungeons_cobblestone.get());
     private static final ChanceConfig PLACEMENT_DUNGEON_COBBLESTONE = new ChanceConfig(DUNGEON_COBBLESTONE_CHANCE);
     private static final int DUNGEON_TALL_COBBLESTONE_CHANCE = 1 + (10 - Config.spawnrate_structure_dungeons_tall_cobblestone.get());
@@ -39,8 +41,7 @@ public class GenFeatures {
     private static final int DUNGEON_TALL_LAVASTONE_CHANCE = 1 + (10 - Config.spawnrate_structure_dungeons_tall_lavastone.get());
     private static final ChanceConfig PLACEMENT_DUNGEON_TALL_LAVASTONE = new ChanceConfig(DUNGEON_TALL_LAVASTONE_CHANCE);
 
-    // cabins
-
+    // Cabins
     private static final int CABIN_OAK_CHANCE = 1 + (10 - Config.spawnrate_structure_cabins_oak.get());
     private static final ChanceConfig PLACEMENT_CABIN_OAK = new ChanceConfig(CABIN_OAK_CHANCE);
     private static final int CABIN_COBBLESTONE_CHANCE = 1 + (10 - Config.spawnrate_structure_cabins_cobblestone.get());
@@ -53,6 +54,10 @@ public class GenFeatures {
     private static final ChanceConfig PLACEMENT_CABIN_JUNGLE = new ChanceConfig(CABIN_JUNGLE_CHANCE);
     private static final int CABIN_ACACIA_CHANCE = 1 + (10 - Config.spawnrate_structure_cabins_acacia.get());
     private static final ChanceConfig PLACEMENT_CABIN_ACACIA = new ChanceConfig(CABIN_ACACIA_CHANCE);
+
+    // ====================
+    // Biome classifications
+    // ====================
 
     private static final Set<Biome.Category> IN_OVERWORLD = ImmutableSet.of(
             Biome.Category.BEACH, Biome.Category.DESERT, Biome.Category.EXTREME_HILLS, Biome.Category.FOREST,
@@ -69,260 +74,96 @@ public class GenFeatures {
     private static final Set<Biome.Category> IN_COLD = ImmutableSet.of(
             Biome.Category.ICY, Biome.Category.TAIGA);
 
+    // ====================
+    // Rock placement config
+    // ====================
+
     // Spread config
     public static final int SPREAD_I = 8;
     public static final int SPREAD_J = 16;
     public static final int SPREAD_K = 4;
 
-    // ====================
-    // Rock placement config
-    // ====================
-
     // Flint
-    private static final BlockClusterFeatureConfig CONFIG_FLINT = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_flint.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(8)
-            .blacklist(ImmutableSet.of(Blocks.GRASS_BLOCK.getDefaultState()))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
+    private static final BlockClusterFeatureConfig CONFIG_FLINT = createClusterFeatureConfigBlacklist(RegBlocks.rock_flint.getDefaultState(), SimpleBlockPlacer.PLACER, 8, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(Blocks.GRASS_BLOCK.getDefaultState()));
 
     // Stone
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_PEBBLE_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_pebble_stone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_TWO_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rockpile_two_stone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone))
-            .xSpread(SPREAD_J).ySpread(SPREAD_J).zSpread(SPREAD_J)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_THREE_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rockpile_three_stone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(16)
-            .whitelist(ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone))
-            .xSpread(SPREAD_J).ySpread(SPREAD_J).zSpread(SPREAD_J)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALGAMITE_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalagmite_stone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(64)
-            .whitelist(ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalactite_stone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(64)
-            .whitelist(ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALGAMITE_TALL_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalagmite_tall_stone.getDefaultState()), PlacerDoubleGround.field_236444_c_)).tries(64)
-            .whitelist(ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalactite_tall_stone.getDefaultState()), PlacerDoubleCeiling.field_236444_c_)).tries(64)
-            .whitelist(ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_PEBBLE_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_pebble_stone.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_TWO_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rockpile_two_stone.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_THREE_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rockpile_three_stone.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALGAMITE_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalagmite_stone.getDefaultState(), SimpleBlockPlacer.PLACER, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalactite_stone.getDefaultState(), SimpleBlockPlacer.PLACER, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALGAMITE_TALL_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalagmite_tall_stone.getDefaultState(), PlacerDoubleGround.field_236444_c_, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalactite_tall_stone.getDefaultState(), PlacerDoubleCeiling.field_236444_c_, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.oldstone, RegBlocks.brokenstone));
 
     // Sediment Stone
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_PEBBLE_SEDIMENT_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_pebble_sedimentstone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(16)
-            .whitelist(ImmutableSet.of(RegBlocks.sedimentstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_TWO_SEDIMENT_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rockpile_two_sedimentstone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(16)
-            .whitelist(ImmutableSet.of(RegBlocks.sedimentstone))
-            .xSpread(SPREAD_J).ySpread(SPREAD_J).zSpread(SPREAD_J)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_THREE_SEDIMENT_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rockpile_three_sedimentstone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(8)
-            .whitelist(ImmutableSet.of(RegBlocks.sedimentstone))
-            .xSpread(SPREAD_J).ySpread(SPREAD_J).zSpread(SPREAD_J)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALGAMITE_SEDIMENT_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalagmite_sedimentstone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.sedimentstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_SEDIMENT_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalactite_sedimentstone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.sedimentstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_TALL_SEDIMENT_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalagmite_tall_sedimentstone.getDefaultState()), PlacerDoubleGround.field_236444_c_)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.sedimentstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_SEDIMENT_STONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalactite_tall_sedimentstone.getDefaultState()), PlacerDoubleCeiling.field_236444_c_)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.sedimentstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_PEBBLE_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_pebble_stone.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.sedimentstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_TWO_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rockpile_two_sedimentstone.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.sedimentstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_THREE_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rockpile_three_sedimentstone.getDefaultState(), SimpleBlockPlacer.PLACER, 8, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.sedimentstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALGAMITE_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalagmite_sedimentstone.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.sedimentstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalactite_sedimentstone.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.sedimentstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_TALL_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalagmite_tall_sedimentstone.getDefaultState(), PlacerDoubleGround.field_236444_c_, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.sedimentstone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalactite_tall_sedimentstone.getDefaultState(), PlacerDoubleCeiling.field_236444_c_, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.sedimentstone));
 
     // Lava stone
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_PEBBLE_LAVASTONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_pebble_lavastone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(16)
-            .whitelist(ImmutableSet.of(RegBlocks.lavastone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_PEBBLE_LAVASTONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_pebble_lavastone.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.lavastone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_TWO_LAVASTONE = createClusterFeatureConfigWhitelist(RegBlocks.rockpile_two_lavastone.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.lavastone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_THREE_LAVASTONE = createClusterFeatureConfigWhitelist(RegBlocks.rockpile_three_lavastone.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.lavastone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_LAVASTONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalagmite_lavastone.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.lavastone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_LAVASTONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalactite_lavastone.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.lavastone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_TALL_LAVASTONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalagmite_tall_lavastone.getDefaultState(), PlacerDoubleGround.field_236444_c_, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.lavastone));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_LAVASTONE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalactite_tall_lavastone.getDefaultState(), PlacerDoubleCeiling.field_236444_c_, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.lavastone));
 
-    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_TWO_LAVASTONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rockpile_two_lavastone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(16)
-            .whitelist(ImmutableSet.of(RegBlocks.lavastone))
-            .xSpread(SPREAD_J).ySpread(SPREAD_J).zSpread(SPREAD_J)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_THREE_LAVASTONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rockpile_three_lavastone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(8)
-            .whitelist(ImmutableSet.of(RegBlocks.lavastone))
-            .xSpread(SPREAD_J).ySpread(SPREAD_J).zSpread(SPREAD_J)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_LAVASTONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalagmite_lavastone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.lavastone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_LAVASTONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalactite_lavastone.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.lavastone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_TALL_LAVASTONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalagmite_tall_lavastone.getDefaultState()), PlacerDoubleGround.field_236444_c_)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.lavastone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_LAVASTONE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalactite_tall_lavastone.getDefaultState()), PlacerDoubleCeiling.field_236444_c_)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.lavastone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-    
     // Packed ice
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_PACKED_ICE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalagmite_packed_ice.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(Blocks.PACKED_ICE))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_PACKED_ICE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalactite_packed_ice.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(Blocks.PACKED_ICE))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_TALL_PACKED_ICE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalagmite_tall_packed_ice.getDefaultState()), PlacerDoubleGround.field_236444_c_)).tries(32)
-            .whitelist(ImmutableSet.of(Blocks.PACKED_ICE))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_PACKED_ICE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.rock_stalactite_tall_packed_ice.getDefaultState()), PlacerDoubleCeiling.field_236444_c_)).tries(32)
-            .whitelist(ImmutableSet.of(Blocks.PACKED_ICE))
-            .xSpread(SPREAD_I).ySpread(SPREAD_I).zSpread(SPREAD_I)
-            .func_227317_b_().build();
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_PACKED_ICE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalagmite_packed_ice.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_PACKED_ICE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalactite_packed_ice.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_TALL_PACKED_ICE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalagmite_tall_packed_ice.getDefaultState(), PlacerDoubleGround.field_236444_c_, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_PACKED_ICE = createClusterFeatureConfigWhitelist(RegBlocks.rock_stalactite_tall_packed_ice.getDefaultState(), PlacerDoubleCeiling.field_236444_c_, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE));
 
     // Mushrooms
-    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_SWEETSHROOM = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.mushroom_sweetshroom.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(64)
-            .blacklist(ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(),
-                    RegBlocks.marlstone.getDefaultState()))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_GOLDISHROOM = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.mushroom_goldishroom.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(16)
-            .blacklist(ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(),
-                    RegBlocks.marlstone.getDefaultState()))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_SHINYSHROOM = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.mushroom_shinyshroom.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(16)
-            .blacklist(ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(),
-                    RegBlocks.marlstone.getDefaultState()))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_LUMISHROOM = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.mushroom_lumishroom.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(64)
-            .blacklist(ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(),
-                    RegBlocks.marlstone.getDefaultState()))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_FLUOSHROOM = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.mushroom_fluoshroom.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(64)
-            .whitelist(ImmutableSet.of(Blocks.DIRT, RegBlocks.dirtstone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_ROCKSHROOM = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.mushroom_rockshroom.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(16)
-            .blacklist(ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(),
-                    RegBlocks.marlstone.getDefaultState()))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
+    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_SWEETSHROOM = createClusterFeatureConfigBlacklist(RegBlocks.mushroom_sweetshroom.getDefaultState(), SimpleBlockPlacer.PLACER, 64, SPREAD_I, SPREAD_K, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(), RegBlocks.marlstone.getDefaultState()));
+    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_GOLDISHROOM = createClusterFeatureConfigBlacklist(RegBlocks.mushroom_goldishroom.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_I, SPREAD_K, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(), RegBlocks.marlstone.getDefaultState()));
+    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_SHINYSHROOM = createClusterFeatureConfigBlacklist(RegBlocks.mushroom_shinyshroom.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_I, SPREAD_K, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(), RegBlocks.marlstone.getDefaultState()));
+    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_LUMISHROOM = createClusterFeatureConfigBlacklist(RegBlocks.mushroom_lumishroom.getDefaultState(), SimpleBlockPlacer.PLACER, 64, SPREAD_I, SPREAD_K, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(), RegBlocks.marlstone.getDefaultState()));
+    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_FLUOSHROOM = createClusterFeatureConfigWhitelist(RegBlocks.mushroom_fluoshroom.getDefaultState(), SimpleBlockPlacer.PLACER, 64, SPREAD_I, SPREAD_K, SPREAD_I, ImmutableSet.of(Blocks.DIRT, RegBlocks.dirtstone));
+    private static final BlockClusterFeatureConfig CONFIG_MUSHROOM_ROCKSHROOM = createClusterFeatureConfigBlacklist(RegBlocks.mushroom_rockshroom.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_I, SPREAD_K, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE.getDefaultState(), RegBlocks.dirtstone.getDefaultState(), RegBlocks.marlstone.getDefaultState()));
 
     // Moss
-    private static final BlockClusterFeatureConfig CONFIG_MOSS_DRY = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.moss_dry.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(8)
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MOSS_FIRE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.moss_fire.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(16)
-            .whitelist(ImmutableSet.of(RegBlocks.lavastone))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MOSS_FROZEN = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.moss_frozen.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(Blocks.PACKED_ICE))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MOSS_HANGING_ROOTS = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.moss_hanging_roots.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(8)
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MOSS_HUMID_GROUND = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.moss_humid_ground.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.dirtstone, Blocks.DIRT))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
-
-    private static final BlockClusterFeatureConfig CONFIG_MOSS_HUMID_CEILING = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.moss_humid_ceiling.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(32)
-            .whitelist(ImmutableSet.of(RegBlocks.dirtstone, Blocks.DIRT))
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
+    private static final BlockClusterFeatureConfig CONFIG_MOSS_DRY = createClusterFeatureConfig(RegBlocks.moss_dry.getDefaultState(), SimpleBlockPlacer.PLACER, 8, SPREAD_I, SPREAD_K, SPREAD_I);
+    private static final BlockClusterFeatureConfig CONFIG_MOSS_FIRE = createClusterFeatureConfigWhitelist(RegBlocks.moss_fire.getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_I, SPREAD_K, SPREAD_I, ImmutableSet.of(RegBlocks.lavastone));
+    private static final BlockClusterFeatureConfig CONFIG_MOSS_FROZEN = createClusterFeatureConfigWhitelist(RegBlocks.moss_frozen.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_K, SPREAD_I, ImmutableSet.of(Blocks.PACKED_ICE));
+    private static final BlockClusterFeatureConfig CONFIG_MOSS_HANGING_ROOTS = createClusterFeatureConfig(RegBlocks.moss_hanging_roots.getDefaultState(), SimpleBlockPlacer.PLACER, 8, SPREAD_I, SPREAD_K, SPREAD_I);
+    private static final BlockClusterFeatureConfig CONFIG_MOSS_HUMID_GROUND = createClusterFeatureConfig(RegBlocks.moss_hanging_roots.getDefaultState(), SimpleBlockPlacer.PLACER, 8, SPREAD_I, SPREAD_K, SPREAD_I);
+    private static final BlockClusterFeatureConfig CONFIG_MOSS_HUMID_CEILING = createClusterFeatureConfigWhitelist(RegBlocks.moss_humid_ceiling.getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_K, SPREAD_I, ImmutableSet.of(RegBlocks.dirtstone, Blocks.DIRT));
 
     // Vines
-    private static final BlockClusterFeatureConfig CONFIG_CAVE_VINE = (new BlockClusterFeatureConfig.Builder(
-            new SimpleBlockStateProvider(RegBlocks.cave_vine_end.getDefaultState()), SimpleBlockPlacer.PLACER)).tries(8)
-            .xSpread(SPREAD_I).ySpread(SPREAD_K).zSpread(SPREAD_I)
-            .func_227317_b_().build();
+    private static final BlockClusterFeatureConfig CONFIG_CAVE_VINE = createClusterFeatureConfig(RegBlocks.cave_vine_end.getDefaultState(), SimpleBlockPlacer.PLACER, 8, SPREAD_I, SPREAD_K, SPREAD_I);
 
-    // Configured features
+    private static BlockClusterFeatureConfig createClusterFeatureConfig(BlockState state, BlockPlacer placer, int tries, int xSpread, int ySpread, int zSpread) {
+        return (new BlockClusterFeatureConfig.Builder(
+                new SimpleBlockStateProvider(state), placer)).tries(tries)
+                .xSpread(xSpread).ySpread(ySpread).zSpread(zSpread)
+                .func_227317_b_().build();
+    }
+
+    private static BlockClusterFeatureConfig createClusterFeatureConfigWhitelist(BlockState state, BlockPlacer placer, int tries, int xSpread, int ySpread, int zSpread, ImmutableSet<Block> whitelist) {
+        return (new BlockClusterFeatureConfig.Builder(
+                new SimpleBlockStateProvider(state), placer)).tries(tries)
+                .xSpread(xSpread).ySpread(ySpread).zSpread(zSpread)
+                .func_227317_b_().whitelist(whitelist).build();
+    }
+
+    private static BlockClusterFeatureConfig createClusterFeatureConfigBlacklist(BlockState state, BlockPlacer placer, int tries, int xSpread, int ySpread, int zSpread, ImmutableSet<BlockState> blacklist) {
+        return (new BlockClusterFeatureConfig.Builder(
+                new SimpleBlockStateProvider(state), placer)).tries(tries)
+                .xSpread(xSpread).ySpread(ySpread).zSpread(zSpread)
+                .func_227317_b_().blacklist(blacklist).build();
+    }
+
+    // ====================
+    // Configured featyres
+    // ====================
+
+    // Blocks
     public static final ConfiguredFeature<?, ?> OLD_STONE = topSolidRangeConfig(configureOre(RegBlocks.oldstone.getDefaultState(), Config.patch_size_oldstone.get()), Config.spawnrate_block_oldstone.get(), 16, 16, 64);
     public static final ConfiguredFeature<?, ?> BROKEN_STONE = topSolidRangeConfig(configureOre(RegBlocks.brokenstone.getDefaultState(), Config.patch_size_brokenstone.get()), Config.spawnrate_block_brokenstone.get(), 16, 16, 54);
     public static final ConfiguredFeature<?, ?> SEDIMENT_STONE = topSolidRangeConfig(configureOre(RegBlocks.sedimentstone.getDefaultState(), Config.patch_size_sedimentstone.get()), Config.spawnrate_block_sedimentstone.get(), 16, 16, 54);
@@ -332,6 +173,7 @@ public class GenFeatures {
     public static final ConfiguredFeature<?, ?> MARLSTONE = topSolidRangeConfig(configureOre(RegBlocks.dirtstone.getDefaultState(), Config.patch_size_marlstone.get()), Config.spawnrate_block_marlstone.get(), 16, 16, 64);
     public static final ConfiguredFeature<?, ?> PACKED_ICE = topSolidRangeConfig(configureOre(Blocks.PACKED_ICE.getDefaultState(), Config.patch_size_packed_ice.get()), Config.spawnrate_block_packed_ice.get(), 16, 16, 64);
 
+    // Decorations
     public static final ConfiguredFeature<?, ?> FLINT = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_FLINT), Config.spawnrate_rock_flints.get(), 16, 16, 64);
     public static final ConfiguredFeature<?, ?> PEBBLE_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_PEBBLE_STONE), Config.spawnrate_rock_pebbles.get(), 16, 16, 64);
     public static final ConfiguredFeature<?, ?> PEBBLE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_PEBBLE_SEDIMENT_STONE), Config.spawnrate_rock_pebbles.get(), 16, 16, 64);
@@ -356,7 +198,12 @@ public class GenFeatures {
     public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_LAVASTONE), Config.spawnrate_rock_stalagmites.get(), 0, 0, 15);
     public static final ConfiguredFeature<?, ?> STALACTITE_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_LAVASTONE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
     public static final ConfiguredFeature<?, ?> STALACTITE_TALL_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_TALL_LAVASTONE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> STALACTITE_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_PACKED_ICE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> STALACTITE_TALL_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_TALL_PACKED_ICE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> STALGAMITE_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_PACKED_ICE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_PACKED_ICE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
 
+    // Mushrooms
     public static final ConfiguredFeature<?, ?> MUSHROOM_SWEETSHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_SWEETSHROOM), Config.spawnrate_mushroom_sweetshroom.get(), 16, 16, 54);
     public static final ConfiguredFeature<?, ?> MUSHROOM_GOLDISHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_GOLDISHROOM), Config.spawnrate_mushroom_goldishroom.get(), 16, 16, 32);
     public static final ConfiguredFeature<?, ?> MUSHROOM_SHINYSHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_SHINYSHROOM), Config.spawnrate_mushroom_shinyshroom.get(), 0, 0, 15);
@@ -364,6 +211,7 @@ public class GenFeatures {
     public static final ConfiguredFeature<?, ?> MUSHROOM_FLUOSHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_FLUOSHROOM), Config.spawnrate_mushroom_fluoshroom.get(), 16, 16, 54);
     public static final ConfiguredFeature<?, ?> MUSHROOM_ROCKSHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_ROCKSHROOM), Config.spawnrate_mushroom_rockshroom.get(), 0, 0, 15);
 
+    // Moss
     public static final ConfiguredFeature<?, ?> MOSS_DRY = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_DRY), Config.spawnrate_moss_dry.get(), 16, 16, 54);
     public static final ConfiguredFeature<?, ?> MOSS_FIRE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_FIRE), Config.spawnrate_moss_fire.get(), 0, 0, 15);
     public static final ConfiguredFeature<?, ?> MOSS_FROZEN = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_FROZEN), Config.spawnrate_moss_frozen.get(), 16, 16, 54);
@@ -371,9 +219,10 @@ public class GenFeatures {
     public static final ConfiguredFeature<?, ?> MOSS_HUMID_GROUND = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_HUMID_GROUND), Config.spawnrate_moss_dry.get(), 16, 16, 54);
     public static final ConfiguredFeature<?, ?> MOSS_HUMID_CEILING = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MOSS_HUMID_CEILING), Config.spawnrate_moss_dry.get(), 16, 16, 54);
 
-    public static ConfiguredFeature<?, ?> VINE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_CAVE_VINE), Config.spawnrate_cave_vine.get(), 16, 16, 54);
+    // Vines
+    public static final ConfiguredFeature<?, ?> VINE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_CAVE_VINE), Config.spawnrate_cave_vine.get(), 16, 16, 54);
 
-    private static ConfiguredFeature<?,?> configureOre(BlockState state, int patchSize) {
+    private static ConfiguredFeature<?, ?> configureOre(BlockState state, int patchSize) {
         return Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.field_241882_a, state, patchSize));
     }
 
@@ -383,8 +232,7 @@ public class GenFeatures {
         return feature.withPlacement(Placement.field_242907_l.configure(new TopSolidRangeConfig(bottomOffset, topOffset, maximum)).func_242731_b(count));
     }
 
-    // Configured Structures TODO: Go via the structure system
-
+    // Configured Structures TODO: Go via the structure system?
     public static final ConfiguredFeature<?, ?> COBBLESTONE_DUNGEON = RegFeatures.STRUCTURE_DUNGEON_COBBLESTONE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_COBBLESTONE));
     public static final ConfiguredFeature<?, ?> TALL_COBBLESTONE_DUNGEON = RegFeatures.STRUCTURE_DUNGEON_TALL_COBBLESTONE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_TALL_COBBLESTONE));
     public static final ConfiguredFeature<?, ?> ICE_DUNGEON = RegFeatures.STRUCTURE_DUNGEON_ICE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.field_242898_b.configure(PLACEMENT_DUNGEON_ICE));
@@ -400,6 +248,7 @@ public class GenFeatures {
 
     /**
      * Register world generation features.
+     *
      * @param event The biome loading event.
      */
     public static void onBiomeLoad(BiomeLoadingEvent event) {
@@ -498,6 +347,11 @@ public class GenFeatures {
                 generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_TALL_SEDIMENT_STONE);
                 generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_LAVASTONE);
                 generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_TALL_LAVASTONE);
+
+                if (IN_COLD.contains(event.getCategory())) {
+                    generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_PACKED_ICE);
+                    generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_TALL_PACKED_ICE);
+                }
             }
 
             if (Config.gen_rock_stalactites.get()) {
@@ -507,6 +361,11 @@ public class GenFeatures {
                 generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALACTITE_TALL_SEDIMENT_STONE);
                 generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALACTITE_LAVASTONE);
                 generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALACTITE_TALL_LAVASTONE);
+
+                if (IN_COLD.contains(event.getCategory())) {
+                    generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALACTITE_PACKED_ICE);
+                    generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALACTITE_TALL_PACKED_ICE);
+                }
             }
 
             if (Config.gen_mushrooms.get()) {
