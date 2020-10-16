@@ -1,5 +1,6 @@
 package com.polyvalord.extcaves;
 
+import com.polyvalord.extcaves.blocks.RegBlockItems;
 import com.polyvalord.extcaves.items.RegItems;
 import com.polyvalord.extcaves.world.RegFeatures;
 import net.minecraft.client.renderer.RenderType;
@@ -48,6 +49,7 @@ public class ExtCaves
 
         // Deferred registries
         RegBlocks.BLOCKS.register(eventBus);
+        RegBlockItems.ITEMS.register(eventBus);
         RegItems.ITEMS.register(eventBus);
         RegFeatures.FEATURES.register(eventBus);
     }

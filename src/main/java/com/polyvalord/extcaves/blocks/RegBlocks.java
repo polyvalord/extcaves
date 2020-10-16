@@ -3,67 +3,26 @@ package com.polyvalord.extcaves.blocks;
 import com.polyvalord.extcaves.ExtCaves;
 import com.polyvalord.extcaves.blocks.basic.BlockSlab;
 import com.polyvalord.extcaves.blocks.basic.BlockStairs;
-import com.polyvalord.extcaves.blocks.decoration.BlockDecorationPot;
-import com.polyvalord.extcaves.blocks.decoration.BlockDecorationPotLong;
-import com.polyvalord.extcaves.blocks.decoration.BlockDecorationPotQuartzLong;
-import com.polyvalord.extcaves.blocks.decoration.BlockDecorationPotQuartzShort;
-import com.polyvalord.extcaves.blocks.decoration.BlockDecorationPotShort;
-import com.polyvalord.extcaves.blocks.moss.BlockMossDry;
-import com.polyvalord.extcaves.blocks.moss.BlockMossFire;
-import com.polyvalord.extcaves.blocks.moss.BlockMossFrozen;
-import com.polyvalord.extcaves.blocks.moss.BlockMossHangingRoots;
-import com.polyvalord.extcaves.blocks.moss.BlockMossHumidCeiling;
-import com.polyvalord.extcaves.blocks.moss.BlockMossHumidGround;
-import com.polyvalord.extcaves.blocks.mushrooms.BlockFluoshroom;
-import com.polyvalord.extcaves.blocks.mushrooms.BlockGoldishroom;
-import com.polyvalord.extcaves.blocks.mushrooms.BlockLumishroom;
-import com.polyvalord.extcaves.blocks.mushrooms.BlockRockshroom;
-import com.polyvalord.extcaves.blocks.mushrooms.BlockShinyshroom;
-import com.polyvalord.extcaves.blocks.mushrooms.BlockSweetshroom;
-import com.polyvalord.extcaves.blocks.rocks.BlockFlint;
-import com.polyvalord.extcaves.blocks.rocks.BlockPebble;
-import com.polyvalord.extcaves.blocks.rocks.BlockRockpileThree;
-import com.polyvalord.extcaves.blocks.rocks.BlockRockpileTwo;
-import com.polyvalord.extcaves.blocks.rocks.BlockStalactite;
-import com.polyvalord.extcaves.blocks.rocks.BlockStalactiteTall;
-import com.polyvalord.extcaves.blocks.rocks.BlockStalagmite;
-import com.polyvalord.extcaves.blocks.rocks.BlockStalagmiteTall;
-import com.polyvalord.extcaves.blocks.treasures.BlockTreasurePot;
-import com.polyvalord.extcaves.blocks.treasures.BlockTreasurePotLong;
-import com.polyvalord.extcaves.blocks.treasures.BlockTreasurePotQuartzLong;
-import com.polyvalord.extcaves.blocks.treasures.BlockTreasurePotQuartzShort;
-import com.polyvalord.extcaves.blocks.treasures.BlockTreasurePotShort;
+import com.polyvalord.extcaves.blocks.decoration.*;
+import com.polyvalord.extcaves.blocks.moss.*;
+import com.polyvalord.extcaves.blocks.mushrooms.*;
+import com.polyvalord.extcaves.blocks.rocks.*;
+import com.polyvalord.extcaves.blocks.treasures.*;
 import com.polyvalord.extcaves.blocks.vines.BlockCaveVine;
 import com.polyvalord.extcaves.blocks.vines.BlockCaveVineEnd;
-import com.polyvalord.extcaves.items.FoodList;
-import com.polyvalord.extcaves.items.ItemDoubleBlock;
-
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SandBlock;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.Rarity;
 import net.minecraftforge.common.ToolType;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ObjectHolder;
 
 import java.util.function.Supplier;
-
-// TODO: Refactor using deferred registers like RegItems and RegFeatures
 
 public class RegBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ExtCaves.MODID);
 
-    // shrooms
+    // Shrooms
     public static final RegistryObject<Block> MUSHROOM_SWEETSHROOM = register("mushroom_sweetshroom", () -> new BlockSweetshroom(8, 5, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)));
     public static final RegistryObject<Block> MUSHROOM_GOLDISHROOM = register("mushroom_goldishroom", () -> new BlockGoldishroom(12, 3, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)));
     public static final RegistryObject<Block> MUSHROOM_SHINYSHROOM = register("mushroom_shinyshroom", () -> new BlockShinyshroom(15, 3, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)));
@@ -71,7 +30,7 @@ public class RegBlocks {
     public static final RegistryObject<Block> MUSHROOM_FLUOSHROOM = register("mushroom_fluoshroom", () -> new BlockFluoshroom(10, 5, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> 8)));
     public static final RegistryObject<Block> MUSHROOM_ROCKSHROOM = register("mushroom_rockshroom", () -> new BlockRockshroom(18, 2, Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).tickRandomly().doesNotBlockMovement().sound(SoundType.PLANT)));
 
-    // mosses
+    // Mosses
     public static final RegistryObject<Block> MOSS_DRY = register("moss_dry", () -> new BlockMossDry(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)));
     public static final RegistryObject<Block> MOSS_FIRE = register("moss_fire", () -> new BlockMossFire(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT).setLightLevel((p_235470_0_) -> 12)));
     public static final RegistryObject<Block> MOSS_FROZEN = register("moss_frozen", () -> new BlockMossFrozen(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)));
@@ -79,11 +38,11 @@ public class RegBlocks {
     public static final RegistryObject<Block> MOSS_HUMID_GROUND = register("moss_humid_ground", () -> new BlockMossHumidGround(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)));
     public static final RegistryObject<Block> MOSS_HUMID_CEILING = register("moss_humid_ceiling", () -> new BlockMossHumidCeiling(Block.Properties.create(Material.PLANTS).hardnessAndResistance(0.0F).doesNotBlockMovement().sound(SoundType.PLANT)));
 
-    // vines
+    // Vines
     public static final RegistryObject<Block> CAVE_VINE = register("cave_vine", () -> new BlockCaveVine(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)));
     public static final RegistryObject<Block> CAVE_VINE_END = register("cave_vine_end", () -> new BlockCaveVineEnd(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)));
 
-    // blocks
+    // Blocks
     public static final RegistryObject<Block> OLDSTONE = register("oldstone", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 4.5F).harvestTool(ToolType.PICKAXE)));
     public static final RegistryObject<Block> BROKENSTONE = register("brokenstone", () -> new BlockBrokenstone(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.75F, 1.5F).harvestTool(ToolType.PICKAXE)));
     public static final RegistryObject<Block> SEDIMENT_STONE = register("sedimentstone", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.0F, 3.0F).harvestTool(ToolType.PICKAXE)));
@@ -105,7 +64,7 @@ public class RegBlocks {
 
     public static final RegistryObject<Block> LAVASTONE_STAIRS = register("lavastone_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)));
     public static final RegistryObject<Block> DIRTSTONE_STAIRS = register("dirtstone_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(1.2F, 3.0F).harvestTool(ToolType.PICKAXE)));
-    public static final RegistryObject<Block> DIRTSONE_COBBLE_STAIRS = register("dirtsone_cobble_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryObject<Block> DIRTSTONE_COBBLE_STAIRS = register("dirtstone_cobble_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).harvestTool(ToolType.PICKAXE)));
     public static final RegistryObject<Block> BRICKS_ICE_STAIRS = register("bricks_ice_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)));
     public static final RegistryObject<Block> BRICKS_SNOW_STAIRS = register("bricks_snow_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestTool(ToolType.PICKAXE)));
     public static final RegistryObject<Block> POLISHED_LAVASTONE_STAIRS = register("polished_lavastone_stairs", () -> new BlockStairs(Blocks.COBBLESTONE.getDefaultState(), Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 8.0F).harvestTool(ToolType.PICKAXE)));
