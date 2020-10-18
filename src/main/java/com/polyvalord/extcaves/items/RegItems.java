@@ -23,11 +23,8 @@ public class RegItems {
     public static final RegistryObject<Item> STEW_HARD = register("stew_hard", () -> new ItemStew(new Item.Properties().group(ExtCaves.extcaves_tab).food(FoodList.FOOD_STEW_HARD)));
 
     public static final RegistryObject<Item> MEDICINE_BANDAGE = register("medicine_bandage", () -> new ItemMedicine(Config.item_bandage_health.get(), new Item.Properties().group(ExtCaves.extcaves_tab)));
-
-    // FALLBACK for old spelling. Need to discover a way to convert old IDs, for now we just support both of them.
-    @Deprecated
-    private static final RegistryObject<Item> MEDICINE_BANDAGE_OLD = register("medecine_bandage", () -> new ItemMedicine(Config.item_bandage_health.get(), new Item.Properties().group(ExtCaves.extcaves_tab)));
-
+    // *removed old medicine bandage
+    
     public static final RegistryObject<Item> PEBBLE_STONE = register("pebble_stone", () -> new Item(new Item.Properties().group(ExtCaves.extcaves_tab)));
     public static final RegistryObject<Item> PEBBLE_SEDIMENT_STONE = register("pebble_sedimentstone", () -> new Item(new Item.Properties().group(ExtCaves.extcaves_tab)));
     public static final RegistryObject<Item> PEBBLE_LAVASTONE = register("pebble_lavastone", () -> new Item(new Item.Properties().group(ExtCaves.extcaves_tab)));
@@ -38,7 +35,8 @@ public class RegItems {
     public static final RegistryObject<Item> BRICK_HALF = register("brick_half", () -> new Item(new Item.Properties().group(ExtCaves.extcaves_tab)));
     public static final RegistryObject<Item> PLANT_FIBER = register("plant_fiber", () -> new Item(new Item.Properties().group(ExtCaves.extcaves_tab)));
 
-    public static final RegistryObject<Item> SURFACE_CRYSTAL = register("surface_crystal", () -> new ItemSurfaceCrystal(new Item.Properties().group(ExtCaves.extcaves_tab)));
+    // not available until fully done
+    //public static final RegistryObject<Item> SURFACE_CRYSTAL = register("surface_crystal", () -> new ItemSurfaceCrystal(new Item.Properties().group(ExtCaves.extcaves_tab)));
 
     public static final RegistryObject<Item> PICKER_STONE = register("picker_stone", () -> new PickaxeItem(ItemTiers.STONE_WEAK, 1, -2.2F, new Item.Properties().group(ExtCaves.extcaves_tab)));
     public static final RegistryObject<Item> PICKER_FLINT = register("picker_flint", () -> new PickaxeItem(ItemTiers.FLINT, 1, -2.2F, new Item.Properties().group(ExtCaves.extcaves_tab)));

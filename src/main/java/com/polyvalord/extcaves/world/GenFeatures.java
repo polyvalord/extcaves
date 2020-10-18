@@ -90,16 +90,16 @@ public class GenFeatures {
     private static final BlockClusterFeatureConfig CONFIG_ROCK_PEBBLE_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_PEBBLE_STONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.OLDSTONE.get(), RegBlocks.BROKENSTONE.get()));
     private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_TWO_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCKPILE_TWO_STONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.OLDSTONE.get(), RegBlocks.BROKENSTONE.get()));
     private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_THREE_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCKPILE_THREE_STONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.OLDSTONE.get(), RegBlocks.BROKENSTONE.get()));
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALGAMITE_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALAGMITE_STONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.OLDSTONE.get(), RegBlocks.BROKENSTONE.get()));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALAGMITE_STONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.OLDSTONE.get(), RegBlocks.BROKENSTONE.get()));
     private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALACTITE_STONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.OLDSTONE.get(), RegBlocks.BROKENSTONE.get()));
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALGAMITE_TALL_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALAGMITE_TALL_STONE.get().getDefaultState(), PlacerDoubleGround.field_236444_c_, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.OLDSTONE.get(), RegBlocks.BROKENSTONE.get()));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_TALL_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALAGMITE_TALL_STONE.get().getDefaultState(), PlacerDoubleGround.field_236444_c_, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.OLDSTONE.get(), RegBlocks.BROKENSTONE.get()));
     private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALACTITE_TALL_STONE.get().getDefaultState(), PlacerDoubleCeiling.field_236444_c_, 64, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.OLDSTONE.get(), RegBlocks.BROKENSTONE.get()));
 
     // Sediment Stone
     private static final BlockClusterFeatureConfig CONFIG_ROCK_PEBBLE_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_PEBBLE_STONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.SEDIMENT_STONE.get()));
     private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_TWO_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCKPILE_TWO_SEDIMENTSTONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 16, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.SEDIMENT_STONE.get()));
     private static final BlockClusterFeatureConfig CONFIG_ROCKPILE_THREE_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCKPILE_THREE_SEDIMENTSTONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 8, SPREAD_J, SPREAD_J, SPREAD_J, ImmutableSet.of(RegBlocks.SEDIMENT_STONE.get()));
-    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALGAMITE_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALAGMITE_SEDIMENTSTONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.SEDIMENT_STONE.get()));
+    private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALAGMITE_SEDIMENTSTONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.SEDIMENT_STONE.get()));
     private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALACTITE_SEDIMENTSTONE.get().getDefaultState(), SimpleBlockPlacer.PLACER, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.SEDIMENT_STONE.get()));
     private static final BlockClusterFeatureConfig CONFIG_ROCK_STALAGMITE_TALL_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALAGMITE_TALL_SEDIMENTSTONE.get().getDefaultState(), PlacerDoubleGround.field_236444_c_, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.SEDIMENT_STONE.get()));
     private static final BlockClusterFeatureConfig CONFIG_ROCK_STALACTITE_TALL_SEDIMENT_STONE = createClusterFeatureConfigWhitelist(RegBlocks.ROCK_STALACTITE_TALL_SEDIMENTSTONE.get().getDefaultState(), PlacerDoubleCeiling.field_236444_c_, 32, SPREAD_I, SPREAD_I, SPREAD_I, ImmutableSet.of(RegBlocks.SEDIMENT_STONE.get()));
@@ -186,22 +186,22 @@ public class GenFeatures {
     public static final ConfiguredFeature<?, ?> ROCKPILE_TWO_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCKPILE_TWO_LAVASTONE), Config.spawnrate_rock_rockpiles.get(), 0, 0, 15);
     public static final ConfiguredFeature<?, ?> ROCKPILE_THREE_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCKPILE_THREE_LAVASTONE), Config.spawnrate_rock_rockpiles.get(), 0, 0, 15);
 
-    public static final ConfiguredFeature<?, ?> STALGAMITE_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALGAMITE_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALGAMITE_TALL_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALAGMITE_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALAGMITE_TALL_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
     public static final ConfiguredFeature<?, ?> STALACTITE_STONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
     public static final ConfiguredFeature<?, ?> STALACTITE_TALL_STONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_TALL_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALGAMITE_SEDIMENT_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_SEDIMENT_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALAGMITE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_SEDIMENT_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALAGMITE_TALL_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_SEDIMENT_STONE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
     public static final ConfiguredFeature<?, ?> STALACTITE_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_SEDIMENT_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
     public static final ConfiguredFeature<?, ?> STALACTITE_TALL_SEDIMENT_STONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_TALL_SEDIMENT_STONE), Config.spawnrate_rock_stalactites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_LAVASTONE), Config.spawnrate_rock_stalagmites.get(), 0, 0, 15);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_LAVASTONE), Config.spawnrate_rock_stalagmites.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> STALAGMITE_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_LAVASTONE), Config.spawnrate_rock_stalagmites.get(), 0, 0, 15);
+    public static final ConfiguredFeature<?, ?> STALAGMITE_TALL_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_LAVASTONE), Config.spawnrate_rock_stalagmites.get(), 0, 0, 15);
     public static final ConfiguredFeature<?, ?> STALACTITE_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_LAVASTONE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
     public static final ConfiguredFeature<?, ?> STALACTITE_TALL_LAVASTONE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_TALL_LAVASTONE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
     public static final ConfiguredFeature<?, ?> STALACTITE_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_PACKED_ICE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
     public static final ConfiguredFeature<?, ?> STALACTITE_TALL_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_CEILING.get().withConfiguration(CONFIG_ROCK_STALACTITE_TALL_PACKED_ICE), Config.spawnrate_rock_stalactites.get(), 0, 0, 15);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_PACKED_ICE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
-    public static final ConfiguredFeature<?, ?> STALGAMITE_TALL_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_PACKED_ICE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALAGMITE_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_PACKED_ICE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
+    public static final ConfiguredFeature<?, ?> STALAGMITE_TALL_PACKED_ICE = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_ROCK_STALAGMITE_TALL_PACKED_ICE), Config.spawnrate_rock_stalagmites.get(), 16, 16, 54);
 
     // Mushrooms
     public static final ConfiguredFeature<?, ?> MUSHROOM_SWEETSHROOM = topSolidRangeConfig(RegFeatures.PATCH_GROUND.get().withConfiguration(CONFIG_MUSHROOM_SWEETSHROOM), Config.spawnrate_mushroom_sweetshroom.get(), 16, 16, 54);
@@ -341,16 +341,16 @@ public class GenFeatures {
             }
 
             if (Config.gen_rock_stalagmites.get()) {
-                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_STONE);
-                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_TALL_STONE);
-                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_SEDIMENT_STONE);
-                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_TALL_SEDIMENT_STONE);
-                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_LAVASTONE);
-                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_TALL_LAVASTONE);
+                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALAGMITE_STONE);
+                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALAGMITE_TALL_STONE);
+                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALAGMITE_SEDIMENT_STONE);
+                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALAGMITE_TALL_SEDIMENT_STONE);
+                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALAGMITE_LAVASTONE);
+                generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALAGMITE_TALL_LAVASTONE);
 
                 if (IN_COLD.contains(event.getCategory())) {
-                    generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_PACKED_ICE);
-                    generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALGAMITE_TALL_PACKED_ICE);
+                    generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALAGMITE_PACKED_ICE);
+                    generation.withFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, STALAGMITE_TALL_PACKED_ICE);
                 }
             }
 

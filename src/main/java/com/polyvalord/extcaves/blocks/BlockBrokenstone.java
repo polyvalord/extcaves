@@ -2,7 +2,6 @@ package com.polyvalord.extcaves.blocks;
 
 import com.polyvalord.extcaves.config.Config;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.BlockPos;
