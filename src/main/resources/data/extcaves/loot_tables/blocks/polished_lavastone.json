@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "extcaves:lavastone"
+              "name": "extcaves:polished_lavastone"
             },
             {
               "type": "minecraft:item",
@@ -33,7 +33,7 @@
                   "condition": "minecraft:survives_explosion"
                 }
               ],
-              "name": "extcaves:lavastone"
+              "name": "extcaves:polished_lavastone"
             }
           ]
         }
